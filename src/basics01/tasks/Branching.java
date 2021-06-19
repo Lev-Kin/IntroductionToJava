@@ -15,10 +15,14 @@ public class Branching {
                 "существует ли такой треугольник, и если да,\n" +
                 "то будет ли он прямоугольным.");
         System.out.println("-------------------------------------------------------------");
+
         int cornerOne = 40;
         int cornerTwo = 50;
         int cornerThree = 180 - cornerOne - cornerTwo;
-        System.out.println("Даны два угла: первый = " + cornerOne + "\u00b0, второй = " + cornerTwo + "\u00b0");
+
+        System.out.println("Даны два угла: первый = " + cornerOne +
+                "\u00b0, второй = " + cornerTwo + "\u00b0");
+
         if (cornerOne > 0 && cornerTwo > 0 && cornerThree > 0) {
             System.out.println("Треугольник существует");
 
@@ -29,12 +33,14 @@ public class Branching {
 
         } else
             System.out.println("Треугольник не существует");
+
         System.out.println("=============================================================\n");
     }
 
     private static void task02() {
         System.out.println("2. Найти max{min(a, b), min(c, d)}");
         System.out.println("-------------------------------------------------------------");
+
         int a = 1;
         int b = 2;
         int c = 3;
@@ -68,6 +74,7 @@ public class Branching {
         System.out.println("3. Даны три точки А(x1, y1), B(x2, y2) и C(x3, x3).\n" +
                 "Определить, будут ли они расположены на одной прямой.");
         System.out.println("-------------------------------------------------------------");
+
         int x1 = 1;
         int x2 = 2;
         int x3 = 3;
@@ -113,6 +120,7 @@ public class Branching {
                 "f(x) = x^2 - 3*x + 9, если x <= 3;\n" +
                 "       1/(x^3 + 6),   если x >  3.");
         System.out.println("-------------------------------------------------------------");
+
         double x = 3;
         double fx = 0;
 
