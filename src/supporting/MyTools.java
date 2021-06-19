@@ -18,5 +18,17 @@ public class MyTools {
         return number;
     }
 
-
+    //------- Проверка на ввод типа данных double --------
+    public static double scannerDouble() {
+        Scanner in = new Scanner(System.in);
+        double number;
+        System.out.print("Введите число: ");
+        while (!in.hasNextDouble()) {
+            in.next();
+            System.out.println("Некорректный ввод!!!\nЧисло должно быть вещественым!");
+            System.out.print("Введите число: ");
+        }
+        number = in.nextDouble();
+        return number;
+    }
 }

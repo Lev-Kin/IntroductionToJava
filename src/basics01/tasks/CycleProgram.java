@@ -42,7 +42,7 @@ public class CycleProgram {
         System.out.println("=============================================================\n");
     }
 
-    public static void task02() {
+    private static void task02() {
         System.out.println("1. Вычислить значения функции на отрезке [a, b] с шагом h:\n" +
                 "y = x, x > 2\n" +
                 "    -x, x <= 2.");
@@ -65,7 +65,7 @@ public class CycleProgram {
         System.out.println("=============================================================\n");
     }
 
-    public static void task03() {
+    private static void task03() {
         System.out.println("3. Найти сумму квадратов первых ста чисел.");
         System.out.println("-------------------------------------------------------------");
 
@@ -78,7 +78,7 @@ public class CycleProgram {
         System.out.println("=============================================================\n");
     }
 
-    public static void task04() {
+    private static void task04() {
         System.out.println("4. Составить программу нахождения произведения квадратов\n" +
                 "первых духсот чисел.");
         System.out.println("-------------------------------------------------------------");
@@ -93,7 +93,7 @@ public class CycleProgram {
         System.out.println("=============================================================\n");
     }
 
-    public static void task05() {
+    private static void task05() {
         System.out.println("5. Даны числовой ряд и некоторое число e. Найти сумму тех\n" +
                 "членов ряда, модуль которых больше или равен заданному e.\n" +
                 "Общий член ряда имеет вид: An = 1/2^n + 1/3^n");
@@ -115,7 +115,7 @@ public class CycleProgram {
         System.out.println("=============================================================\n");
     }
 
-    public static void task06() {
+    private static void task06() {
         System.out.println("6. Вывести на экран сооветсвий между символами и их численными\n" +
                 "обозначениями в памяти компьютера.");
         System.out.println("-------------------------------------------------------------");
@@ -127,7 +127,7 @@ public class CycleProgram {
         System.out.println("=============================================================\n");
     }
 
-    public static void task07() {
+    private static void task07() {
         System.out.println("7. Для каждого натурального числа в промежутке от m до n\n" +
                 "вывести все делители, кроме единицы и самого числа.\n" +
                 "m и n вводятся с клавятуры.");
@@ -172,7 +172,7 @@ public class CycleProgram {
         System.out.println("=============================================================\n");
     }
 
-    public static void task08() {
+    private static void task08() {
         System.out.println("8. Даны два числа. Определить цифры, входящие в запись как\n" +
                 "первого так и второго числа.");
         System.out.println("-------------------------------------------------------------");

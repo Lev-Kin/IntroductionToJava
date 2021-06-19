@@ -32,7 +32,7 @@ public class Branching {
         System.out.println("=============================================================\n");
     }
 
-    public static void task02() {
+    private static void task02() {
         System.out.println("2. Найти max{min(a, b), min(c, d)}");
         System.out.println("-------------------------------------------------------------");
         int a = 1;
@@ -83,7 +83,7 @@ public class Branching {
         System.out.println("=============================================================\n");
     }
 
-    public static void task04() {
+    private static void task04() {
         System.out.println("4. Заданы размеры А, В прямоугольного отверстия и размеры\n" +
                 "х, у, z кирпича.\n" +
                 "Определить, пройдет ли кирпич через отверстие.");
@@ -108,7 +108,7 @@ public class Branching {
         System.out.println("=============================================================\n");
     }
 
-    public static void task05() {
+    private static void task05() {
         System.out.println("5. Вычислить значение функции:\n" +
                 "f(x) = x^2 - 3*x + 9, если x <= 3;\n" +
                 "       1/(x^3 + 6),   если x >  3.");
