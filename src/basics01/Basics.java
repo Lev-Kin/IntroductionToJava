@@ -1,6 +1,7 @@
 package basics01;
 
 import basics01.tasks.Branching;
+import basics01.tasks.CycleProgram;
 import basics01.tasks.Liner;
 
 public class Basics {
@@ -11,5 +12,6 @@ public class Basics {
         System.out.println();
         Liner.Tasks();
         Branching.Tasks();
+        CycleProgram.Tasks();
     }
 }
