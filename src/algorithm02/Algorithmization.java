@@ -1,6 +1,6 @@
 package algorithm02;
 
-import algorithm02.tasts.Arrays1D;
+import algorithm02.tasks.Arrays1D;
 
 public class Algorithmization {
     public static void Solution() {

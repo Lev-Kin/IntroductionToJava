@@ -1,4 +1,4 @@
-package algorithm02.tasts;
+package algorithm02.tasks;
 
 public class Arrays1D {
     public static void Tasks() {
