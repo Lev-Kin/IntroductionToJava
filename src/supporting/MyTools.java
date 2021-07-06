@@ -1,6 +1,5 @@
 package supporting;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class MyTools {
@@ -35,14 +34,15 @@ public class MyTools {
 
     ////------- Для работы с массивами --------
     //------- Ввод массива пользователем --------
-    public static void enterArrayFromConsole(int[] array) {
+    public static void enterArrayUser(int[] array) {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < array.length; i++) {
             System.out.print("A[" + i + "] --> ");
             array[i] = sc.nextInt();
         }
     }
-    public static void enterArrayFromConsole(double[] array) {
+
+    public static void enterArrayUser(double[] array) {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < array.length; i++) {
             System.out.print("A[" + i + "] --> ");
@@ -51,10 +51,16 @@ public class MyTools {
     }
 
     //------- Ввод массива случайными числами --------
-    public static void enterArrayRandom(int[] array) {
-        Random rand = new Random();
+    public static void enterArrayRandomInt(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            array[i] = rand.nextInt(200);
+            array[i] = (int) (Math.random() * (200 + 1)) - 100;
+        }
+    }
+
+    public static void enterArrayRandomDouble(double[] array) {
+        for (int i = 0; i < array.length; i++) {
+            double random_number = Math.random() * 20 - 10;
+            array[i] = random_number;
         }
     }
 
@@ -62,16 +68,18 @@ public class MyTools {
     public static void printArray(int[] array) {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         for (int i = 0; i < array.length; i++) {
-            System.out.println("A[" + i + "] = " + array[i]);
+            System.out.printf("A[%d] = %4d\n", i, array[i]);
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
+
     public static void printArray(double[] array) {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         for (int i = 0; i < array.length; i++) {
-            System.out.println("A[" + i + "] = " + array[i]);
+            System.out.printf("A[%d] = %6.2f\n", i, array[i]);
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
+
 }
 
