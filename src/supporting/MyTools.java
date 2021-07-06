@@ -1,5 +1,6 @@
 package supporting;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class MyTools {
@@ -31,4 +32,46 @@ public class MyTools {
         number = in.nextDouble();
         return number;
     }
+
+    ////------- Для работы с массивами --------
+    //------- Ввод массива пользователем --------
+    public static void enterArrayFromConsole(int[] array) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print("A[" + i + "] --> ");
+            array[i] = sc.nextInt();
+        }
+    }
+    public static void enterArrayFromConsole(double[] array) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print("A[" + i + "] --> ");
+            array[i] = sc.nextDouble();
+        }
+    }
+
+    //------- Ввод массива случайными числами --------
+    public static void enterArrayRandom(int[] array) {
+        Random rand = new Random();
+        for (int i = 0; i < array.length; i++) {
+            array[i] = rand.nextInt(200);
+        }
+    }
+
+    //------- Вывод элемнтов массива на консоль --------
+    public static void printArray(int[] array) {
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        for (int i = 0; i < array.length; i++) {
+            System.out.println("A[" + i + "] = " + array[i]);
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+    }
+    public static void printArray(double[] array) {
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        for (int i = 0; i < array.length; i++) {
+            System.out.println("A[" + i + "] = " + array[i]);
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+    }
 }
+
