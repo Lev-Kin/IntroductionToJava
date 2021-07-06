@@ -68,7 +68,7 @@ public class MyTools {
     public static void printArray(int[] array) {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         for (int i = 0; i < array.length; i++) {
-            System.out.printf("A[%d] = %4d\n", i, array[i]);
+            System.out.printf("A[%2d] = %4d\n", i, array[i]);
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
@@ -76,7 +76,7 @@ public class MyTools {
     public static void printArray(double[] array) {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         for (int i = 0; i < array.length; i++) {
-            System.out.printf("A[%d] = %6.2f\n", i, array[i]);
+            System.out.printf("A[%2d] = %6.2f\n", i, array[i]);
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
