@@ -8,9 +8,11 @@ public class Arrays1D {
         System.out.println("\t\t\t=== Одномерные массивы ===\n");
         //task01();
         //task02();
-        task03();
-        task04();
-
+        //task03();
+        //task04();
+        //task05();
+        task06();
+        task07();
     }
 
     private static void task01() {
@@ -135,6 +137,67 @@ public class Arrays1D {
 
         System.out.println("=============================================================\n");
     }
+
+    static public void task05() {
+        System.out.println("5. Даны целые числа а1 ,а2 ,..., аn.\n" +
+                "Вывести на печать только те числа, для которых аi > i.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = 11;
+        int[] array = new int[n];
+
+        System.out.println("Дан массив размерность которого равна " + n);
+        enterArrayRandomInt(array);
+        printArray(array);
+
+        System.out.println("Числа, для которых a[i] > i: ");
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > i) {
+                System.out.println("A[" + i + "] = " + array[i]);
+            }
+        }
+        System.out.println("=============================================================\n");
+    }
+
+    static public void task06() {
+        System.out.println("6. Задана последовательность N вещественных чисел.\n" +
+                "Вычислить сумму чисел, порядковые номера которых\n" +
+                "являются простыми числами.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = 12;
+        double[] array = new double[n];
+        double sum = 0.0;
+
+        System.out.println("Дан массив размерность которого равна " + n);
+        enterArrayRandomDouble(array);
+        printArray(array);
+
+        System.out.println("Выводим на экран порядковые нормера которые являются\n" +
+                "простыми числами и их заначение");
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        nextPrime:
+        for (int i = 2; i < array.length; i++) {
+
+            for (int j = 2; j < i; j++) {
+                if (i % j == 0) continue nextPrime;
+            }
+
+            System.out.printf("A[%2d] = %6.2f\n", i, array[i]);
+            sum += array[i];
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.printf("Сумма элеметов где i - постое число = %6.2f\n", sum);
+        System.out.println("=============================================================\n");
+    }
+
+    static public void task07(){
+        System.out.println("7. Даны действительные числа a1, a2, ..., an.\n" +
+                "Найти. ");
+        System.out.println("-------------------------------------------------------------");
+    }
+
 
 
 }
