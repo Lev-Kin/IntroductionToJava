@@ -11,8 +11,10 @@ public class Arrays1D {
         //task03();
         //task04();
         //task05();
-        task06();
-        task07();
+        //task06();
+        //task07();
+        //task08();
+        task09();
     }
 
     private static void task01() {
@@ -192,12 +194,159 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task07(){
+    static public void task07() {
         System.out.println("7. Даны действительные числа a1, a2, ..., an.\n" +
-                "Найти. ");
+                "Найти: max(a1 + a2n, a2 + a2n-1, ..., an + an-1)");
         System.out.println("-------------------------------------------------------------");
+
+        int n = 12;
+        double[] array = new double[n];
+        double max = Double.MIN_VALUE;
+
+        System.out.println("Дан массив размерность которого равна " + n);
+        enterArrayRandomDouble(array);
+        printArray(array);
+
+        for (int i = 0; i < array.length; i++) {
+            if (i == 0) {
+                max = array[0] + array[1];
+            } else if (array[i] + array[i - 1] > max) {
+                max = array[i] + array[i - 1];
+            }
+        }
+
+        System.out.printf(" max(a1 + a2n, a2 + a2n-1, ..., an + an-1) = %6.2f\n", max);
+        System.out.println("=============================================================\n");
     }
 
+    static public void task08() {
+        System.out.println("8. Дана последовательность целых чисел a1, a2, ..., an.\n" +
+                "Образовать новую последовательность, выбросив из исходной\n" +
+                "челены, которые равны min(a1, a2, ..., an)");
+        System.out.println("-------------------------------------------------------------");
 
+        int n = 20;
+        int[] array = new int[n];
+
+        System.out.println("Дан массив размерность которого равна " + n);
+        enterArrayRandomInt(array);
+        printArray(array);
+
+        int min = Integer.MAX_VALUE;
+        int minCount = 0;
+
+        System.out.println("min(a1, a2, ..., an):");
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+                minCount++;
+                System.out.printf("A[%2d] = %4d\n", i, min);
+            }
+        }
+
+        //создаем массив без min элементов
+        int[] result = new int[array.length - minCount];
+        int index = 0;
+        min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < array.length; i++) {
+            if (!(array[i] < min)) {
+                result[index] = array[i];
+                index++;
+            }
+
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Новая паследовательность с выбрасом из изходного массива\n" +
+                "членов которые равны min(a1, a2, ..., an)");
+        printArray(result);
+        System.out.println("=============================================================\n");
+    }
+
+    static public void task09() {
+        System.out.println("9. В массиве целых чисел с количеством элементов n найти\n" +
+                "наиболее часто встречающееся число. Если таких чисел несколько, то\n" +
+                "определить наименьшее из них.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = 30;
+        int[] array = new int[n];
+
+        System.out.println("Дан массив размерность которого равна " + n);
+        enterArrayRandomInt(array);
+        printArray(array);
+
+        int amountRepeatNumber = 0;
+        int count;
+        int min = Integer.MAX_VALUE;
+
+        //Находим повторяющийся числа определяем сколько их всего и делаем меньший массив
+        for (int i = 0; i < array.length; i++) {
+            count = 0;
+            for (int j = 0; j < array.length; j++) {
+                if (array[i] == array[j]) {
+                    count++;
+                }
+            }
+
+            if (count > 1) {
+                amountRepeatNumber++;
+            }
+        }
+
+        if (amountRepeatNumber != 0) {
+
+            //Заполняем массив часто встречающимися числами
+            int[] repeatNumber = new int[amountRepeatNumber];
+            int index = 0;
+
+            for (int i = 0; i < array.length; i++) {
+                count = 0;
+                for (int j = 0; j < array.length; j++) {
+                    if (array[i] == array[j]) {
+                        count++;
+                    }
+                }
+
+                if (count > 1) {
+                    repeatNumber[index] = array[i];
+                    index++;
+                }
+            }
+
+            System.out.println("Массив с повторяющимися числами из данного массива:");
+            printArray(repeatNumber);
+
+            // делаем maxCount чтоб найти наиболее часто встречающиеся число
+            int maxCount = Integer.MIN_VALUE;
+            for (int i = 0; i < repeatNumber.length; i++) {
+                count = 0;
+                for (int j = 0; j < repeatNumber.length; j++) {
+                    if (repeatNumber[i] == repeatNumber[j]) {
+                        count++;
+                    }
+                }
+
+                if (count > maxCount) {
+                    maxCount = count;
+                    min = repeatNumber[i];
+                } else if (maxCount == count) {
+                    if (repeatNumber[i] < min) {
+                        min = repeatNumber[i];
+                    }
+                }
+            }
+
+            System.out.println("Число встречается max раз = " + maxCount);
+            System.out.println("Наименьше число и из часто всречающийся " + min);
+        } else {
+            System.out.println("Повторяющийся числа не обнаружины ");
+        }
+        System.out.println("=============================================================\n");
+    }
 
 }
