@@ -6,15 +6,16 @@ import static supporting.MyTools.*;
 public class Arrays1D {
     public static void Tasks() {
         System.out.println("\t\t\t=== Одномерные массивы ===\n");
-        //task01();
-        //task02();
-        //task03();
-        //task04();
-        //task05();
-        //task06();
-        //task07();
-        //task08();
+        task01();
+        task02();
+        task03();
+        task04();
+        task05();
+        task06();
+        task07();
+        task08();
         task09();
+        task10();
     }
 
     private static void task01() {
@@ -43,8 +44,8 @@ public class Arrays1D {
     }
 
     static public void task02() {
-        System.out.println("2. Дана последовательность действительных чисел a1, a2, ..., an.\n" +
-                "Заменить все ее члены, большие данного Z, этим числом.\n" +
+        System.out.println("2. Дана последовательность действительных чисел a1, a2, ...,\n" +
+                "an. Заменить все ее члены, большие данного Z, этим числом.\n" +
                 "Подсчитаь кол-во замен.");
         System.out.println("-------------------------------------------------------------");
 
@@ -155,7 +156,7 @@ public class Arrays1D {
         System.out.println("Числа, для которых a[i] > i: ");
         for (int i = 0; i < array.length; i++) {
             if (array[i] > i) {
-                System.out.println("A[" + i + "] = " + array[i]);
+                System.out.printf("A[%2d] = %4d\n", i, array[i]);
             }
         }
         System.out.println("=============================================================\n");
@@ -269,8 +270,8 @@ public class Arrays1D {
 
     static public void task09() {
         System.out.println("9. В массиве целых чисел с количеством элементов n найти\n" +
-                "наиболее часто встречающееся число. Если таких чисел несколько, то\n" +
-                "определить наименьшее из них.");
+                "наиболее часто встречающееся число. Если таких чисел\n" +
+                "несколько, то определить наименьшее из них.");
         System.out.println("-------------------------------------------------------------");
 
         int n = 30;
@@ -344,9 +345,46 @@ public class Arrays1D {
             System.out.println("Число встречается max раз = " + maxCount);
             System.out.println("Наименьше число и из часто всречающийся " + min);
         } else {
-            System.out.println("Повторяющийся числа не обнаружины ");
+            System.out.println("Повторяющийся числа не обнаружины.");
         }
         System.out.println("=============================================================\n");
     }
 
+    static public void task10() {
+        System.out.println("10. Дан целочисленный массив с количеством элементов n.\n" +
+                "Сжать массив, выбросив из него каждый второй элемент\n" +
+                "(освободившиеся элементы заполнить нулями).\n" +
+                "Примечание. Дополнительный массив не использовать");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = 21;
+        int[] array = new int[n];
+
+        System.out.println("Дан массив размерность которого равна " + n);
+        enterArrayRandomInt(array);
+        printArray(array);
+
+        System.out.println("Kаждый второй элемент массива заполняем нулеми.");
+        for (int i = 0; i < array.length; i++) {
+            if (i % 2 != 0) {
+                array[i] = 0;
+            }
+        }
+        printArray(array);
+
+        System.out.println("Все нулевые элементы премещаем в конец массива.");
+        int i = 0;
+        for (int j = 0; j < array.length; j++) {
+            if (array[j] != 0) {
+                array[i++] = array[j];
+            }
+        }
+
+        while (i < array.length) {
+            array[i++] = 0;
+        }
+
+        printArray(array);
+        System.out.println("=============================================================\n");
+    }
 }
