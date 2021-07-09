@@ -1,5 +1,7 @@
 package algorithm02.tasks;
 
+import supporting.MyTools;
+
 import static java.lang.Math.abs;
 import static supporting.MyTools.*;
 
@@ -27,7 +29,7 @@ public class Arrays1D {
         int[] array = new int[10];
         int sum = 0;
 
-        enterArrayRandomInt(array);
+        enterArrayRandom(array);
         printArray(array);
 
         System.out.println("Числа кратные K = " + k + ":");
@@ -54,7 +56,7 @@ public class Arrays1D {
         int count = 0;
 
         System.out.println("Начальный массив:");
-        enterArrayRandomDouble(array);
+        MyTools.enterArrayRandom(array);
         printArray(array);
 
         for (int i = 0; i < array.length; i++) {
@@ -84,7 +86,7 @@ public class Arrays1D {
         int zeroCount = 0;
 
         System.out.println("Дан массив размерность которого равна " + n);
-        enterArrayRandomDouble(array);
+        MyTools.enterArrayRandom(array);
         printArray(array);
 
         for (int i = 0; i < array.length; i++)
@@ -111,7 +113,7 @@ public class Arrays1D {
         double[] array = new double[n];
 
         System.out.println("Дан массив размерность которого равна " + n);
-        enterArrayRandomDouble(array);
+        MyTools.enterArrayRandom(array);
         printArray(array);
 
         // Вычиляем наименьший и наибольший элемент в массиве
@@ -150,7 +152,7 @@ public class Arrays1D {
         int[] array = new int[n];
 
         System.out.println("Дан массив размерность которого равна " + n);
-        enterArrayRandomInt(array);
+        enterArrayRandom(array);
         printArray(array);
 
         System.out.println("Числа, для которых a[i] > i: ");
@@ -173,7 +175,7 @@ public class Arrays1D {
         double sum = 0.0;
 
         System.out.println("Дан массив размерность которого равна " + n);
-        enterArrayRandomDouble(array);
+        MyTools.enterArrayRandom(array);
         printArray(array);
 
         System.out.println("Выводим на экран порядковые нормера которые являются\n" +
@@ -205,7 +207,7 @@ public class Arrays1D {
         double max = Double.MIN_VALUE;
 
         System.out.println("Дан массив размерность которого равна " + n);
-        enterArrayRandomDouble(array);
+        MyTools.enterArrayRandom(array);
         printArray(array);
 
         for (int i = 0; i < array.length; i++) {
@@ -230,7 +232,7 @@ public class Arrays1D {
         int[] array = new int[n];
 
         System.out.println("Дан массив размерность которого равна " + n);
-        enterArrayRandomInt(array);
+        enterArrayRandom(array);
         printArray(array);
 
         int min = Integer.MAX_VALUE;
@@ -278,7 +280,7 @@ public class Arrays1D {
         int[] array = new int[n];
 
         System.out.println("Дан массив размерность которого равна " + n);
-        enterArrayRandomInt(array);
+        enterArrayRandom(array);
         printArray(array);
 
         int amountRepeatNumber = 0;
@@ -361,7 +363,7 @@ public class Arrays1D {
         int[] array = new int[n];
 
         System.out.println("Дан массив размерность которого равна " + n);
-        enterArrayRandomInt(array);
+        enterArrayRandom(array);
         printArray(array);
 
         System.out.println("Kаждый второй элемент массива заполняем нулеми.");

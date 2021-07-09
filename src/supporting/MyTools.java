@@ -51,13 +51,13 @@ public class MyTools {
     }
 
     //------- Ввод массива случайными числами --------
-    public static void enterArrayRandomInt(int[] array) {
+    public static void enterArrayRandom(int[] array) {
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * (200 + 1)) - 100;
         }
     }
 
-    public static void enterArrayRandomDouble(double[] array) {
+    public static void enterArrayRandom(double[] array) {
         for (int i = 0; i < array.length; i++) {
             double random_number = Math.random() * 20 - 10;
             array[i] = random_number;
@@ -80,6 +80,49 @@ public class MyTools {
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
+
+    ////------- Для работы с матрицами --------
+    //------- Ввод матрицы случайными числами --------
+    public static void enterMatrixRandom(int[][] matrix, int m, int n) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = (int) (Math.random() * (200 + 1)) - 100;
+            }
+        }
+    }
+
+    public static void enterMatrixRandom(double[][] matrix, int m, int n) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                double random_number = Math.random() * 20 - 10;
+                matrix[i][j] = random_number;
+            }
+        }
+    }
+
+    //------- Вывод элемнтов матрицы на консоль --------
+    public static void printMatrix(int[][] matrix, int m, int n) {
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.printf("[%d][%d] = %3d ", i, j, matrix[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+    }
+
+    public static void printMatrix(double[][] matrix, int n, int m) {
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.printf("[%d][%d] = %5.2f ", i, j, matrix[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+    }
+
 
 }
 
