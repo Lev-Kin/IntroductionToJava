@@ -6,10 +6,10 @@ public class ArraysND {
     public static void Tasks() {
         System.out.println("\t\t\t=== Массивы массивов ===\n");
         //task01();
-        task02();
-        task03();
-//        task04();
-//        task05();
+        //task02();
+        //task03();
+        //task04();
+        task05();
 //        task06();
 //        task07();
 //        task08();
@@ -118,5 +118,49 @@ public class ArraysND {
         System.out.println("=============================================================\n");
     }
 
+    private static void task04() {
+        System.out.println("4. Сформировать квадратную матрицу порядка n\n" +
+                "по заданному образцу(n - четное):");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = 5;
+        int[][] matrix = new int[n][n];
+
+        System.out.println("Дана матрица " + n + " X " + n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i % 2 == 0)
+                    matrix[i][j] = j + 1;
+                else
+                    matrix[i][j] = n - j;
+            }
+        }
+
+        printMatrix(matrix, n, n);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task05() {
+        System.out.println("5. Сформировать квадратную матрицу порядка n\n" +
+                "по заданному образцу(n - четное):");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = 5;
+        int[][] matrix = new int[n][n];
+
+        System.out.println("Дана матрица " + n + " X " + n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = i + 1;
+            }
+
+            for (int j = n - i; j < n; j++) {
+                matrix[i][j] = 0;
+            }
+        }
+
+        printMatrix(matrix, n, n);
+        System.out.println("=============================================================\n");
+    }
 
 }
