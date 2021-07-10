@@ -112,7 +112,7 @@ public class MyTools {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
 
-    public static void printMatrix(double[][] matrix, int n, int m) {
+    public static void printMatrix(double[][] matrix, int m, int n) {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {

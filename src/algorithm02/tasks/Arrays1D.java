@@ -3,7 +3,8 @@ package algorithm02.tasks;
 import supporting.MyTools;
 
 import static java.lang.Math.abs;
-import static supporting.MyTools.*;
+import static supporting.MyTools.enterArrayRandom;
+import static supporting.MyTools.printArray;
 
 public class Arrays1D {
     public static void Tasks() {
@@ -45,7 +46,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task02() {
+    private static void task02() {
         System.out.println("2. Дана последовательность действительных чисел a1, a2, ...,\n" +
                 "an. Заменить все ее члены, большие данного Z, этим числом.\n" +
                 "Подсчитаь кол-во замен.");
@@ -73,7 +74,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task03() {
+    private static void task03() {
         System.out.println("3. Дан массив действительных чисел, размерность которого N.\n" +
                 "Подсчитать, сколько в нем отрицательных, положительных\n" +
                 "и нулевых элементов.");
@@ -104,7 +105,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task04() {
+    private static void task04() {
         System.out.println("4. Даны действительные числа а1 ,а2 ,..., аn.\n" +
                 "Поменять местами наибольший и наименьший элементы.");
         System.out.println("-------------------------------------------------------------");
@@ -143,7 +144,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task05() {
+    private static void task05() {
         System.out.println("5. Даны целые числа а1 ,а2 ,..., аn.\n" +
                 "Вывести на печать только те числа, для которых аi > i.");
         System.out.println("-------------------------------------------------------------");
@@ -164,7 +165,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task06() {
+    private static void task06() {
         System.out.println("6. Задана последовательность N вещественных чисел.\n" +
                 "Вычислить сумму чисел, порядковые номера которых\n" +
                 "являются простыми числами.");
@@ -197,7 +198,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task07() {
+    private static void task07() {
         System.out.println("7. Даны действительные числа a1, a2, ..., an.\n" +
                 "Найти: max(a1 + a2n, a2 + a2n-1, ..., an + an-1)");
         System.out.println("-------------------------------------------------------------");
@@ -222,7 +223,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task08() {
+    private static void task08() {
         System.out.println("8. Дана последовательность целых чисел a1, a2, ..., an.\n" +
                 "Образовать новую последовательность, выбросив из исходной\n" +
                 "челены, которые равны min(a1, a2, ..., an)");
@@ -270,7 +271,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task09() {
+    private static void task09() {
         System.out.println("9. В массиве целых чисел с количеством элементов n найти\n" +
                 "наиболее часто встречающееся число. Если таких чисел\n" +
                 "несколько, то определить наименьшее из них.");
@@ -352,7 +353,7 @@ public class Arrays1D {
         System.out.println("=============================================================\n");
     }
 
-    static public void task10() {
+    private static void task10() {
         System.out.println("10. Дан целочисленный массив с количеством элементов n.\n" +
                 "Сжать массив, выбросив из него каждый второй элемент\n" +
                 "(освободившиеся элементы заполнить нулями).\n" +
