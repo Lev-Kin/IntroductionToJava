@@ -5,16 +5,22 @@ import static supporting.MyTools.*;
 public class ArraysND {
     public static void Tasks() {
         System.out.println("\t\t\t=== Массивы массивов ===\n");
-        //task01();
-        //task02();
-        //task03();
-        //task04();
-        //task05();
-        //task06();
-        //task07();
-        //task08();
-        //task09();
+        task01();
+        task02();
+        task03();
+        task04();
+        task05();
+        task06();
+        task07();
+        task08();
+        task09();
         task10();
+        task11();
+        task12();
+        task13();
+        task14();
+        task15();
+        task16();
     }
 
     private static void task01() {
@@ -336,5 +342,259 @@ public class ArraysND {
         System.out.println("=============================================================\n");
     }
 
+    private static void task11() {
+        System.out.println("11. Матрицу 10x20 заполнить случайными числами от 0 до 15.\n" +
+                "Вывести на экран саму матрицу и номера строк, в\n" +
+                "которых число 5 встречается три и более раз..");
+        System.out.println("-------------------------------------------------------------");
 
+        int m = 10;
+        int n = 20;
+        int k = 0;
+
+        int[][] matrix = new int[m][n];
+        int[] row = new int[m];
+        int countNumberFive = 0;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = (int) (Math.random() * (15 + 1));
+            }
+        }
+
+        System.out.println("Дана матрица " + m + " X " + n);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+
+                System.out.printf(" %2d ", matrix[i][j]);
+
+                if (matrix[i][j] == 5)
+                    countNumberFive++;
+            }
+            if (countNumberFive >= 3) {
+                row[k] = i;
+                k++;
+            }
+
+            countNumberFive = 0;
+            System.out.println();
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("Нормера строк, в которых число 5 встречается три и более раз.");
+        for (int i = 0; i < k; i++) {
+            System.out.printf("Строка %d\n", row[i]);
+        }
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task12() {
+        System.out.println("12. Отсортировать строки матрицы \n" +
+                "по возрастанию и убыванию значений элементов.");
+        System.out.println("-------------------------------------------------------------");
+
+        int m = 5;
+        int n = 5;
+
+        int[][] matrix = new int[m][n];
+
+        System.out.println("Дана матрица " + m + " X " + n);
+        enterMatrixRandom(matrix, m, n);
+        printMatrix(matrix, m, n);
+
+        System.out.println("Сортируем строки матрицы по возрастанию элементов:");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n - 1; k++) {
+                    if (matrix[i][k + 1] < matrix[i][k]) {
+                        int temp = matrix[i][k + 1];
+                        matrix[i][k + 1] = matrix[i][k];
+                        matrix[i][k] = temp;
+                    }
+                }
+            }
+        }
+        printMatrix(matrix, m, n);
+
+        System.out.println("Сортируем строки матрицы по убыванию элементов:");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n - 1; k++) {
+                    if (matrix[i][k + 1] > matrix[i][k]) {
+                        int temp = matrix[i][k + 1];
+                        matrix[i][k + 1] = matrix[i][k];
+                        matrix[i][k] = temp;
+                    }
+                }
+            }
+        }
+        printMatrix(matrix, m, n);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task13() {
+        System.out.println("13. Отсортировать столбцы матрицы\n" +
+                "по возрастанию и убыванию значений элементов.");
+        System.out.println("-------------------------------------------------------------");
+
+        int m = 5;
+        int n = 5;
+
+        int[][] matrix = new int[m][n];
+
+        System.out.println("Дана матрица " + m + " X " + n);
+        enterMatrixRandom(matrix, m, n);
+        printMatrix(matrix, m, n);
+
+        System.out.println("Сортируем столбцы матрицы по возрастанию элементов:");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n - 1; k++) {
+                    if (matrix[k + 1][j] < matrix[k][j]) {
+                        int temp = matrix[k + 1][j];
+                        matrix[k + 1][j] = matrix[k][j];
+                        matrix[k][j] = temp;
+                    }
+                }
+            }
+        }
+        printMatrix(matrix, m, n);
+
+        System.out.println("Сортируем столбцы матрицы по убыванию элементов:");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n - 1; k++) {
+                    if (matrix[k + 1][j] > matrix[k][j]) {
+                        int temp = matrix[k + 1][j];
+                        matrix[k + 1][j] = matrix[k][j];
+                        matrix[k][j] = temp;
+                    }
+                }
+            }
+        }
+        printMatrix(matrix, m, n);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task14() {
+        System.out.println("14. Сформировать случайную матрицу m x n, состоящую из нулей\n" +
+                "и единиц, причем в каждом столбце число единиц равно номеру\n" +
+                "столбца по возрастанию и убыванию значений элементов.");
+        System.out.println("-------------------------------------------------------------");
+
+        int m = (int) (Math.random() * 6 + 2);
+        int n = (int) (Math.random() * 6 + 2);
+
+        if (m < n) {
+            int t = m;
+            m = n;
+            n = t;
+        }
+
+        int[][] matrix = new int[m][n];
+
+        System.out.println("Дана матрица " + m + " X " + n);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = 0;
+                if (i < n && i <= j) {
+                    for (int h = i; h > 0; h--) {
+                        matrix[h][j] = 1;
+                    }
+                }
+            }
+        }
+
+        printMatrix(matrix, m, n);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task15() {
+        System.out.println("15. Найдите наибольший элемент матрицы и заменить все нечетные\n" +
+                "элементы на него.");
+        System.out.println("-------------------------------------------------------------");
+
+        int m = 5;
+        int n = 5;
+        int maxElement = Integer.MIN_VALUE;
+
+        int[][] matrix = new int[m][n];
+
+        System.out.println("Дана матрица " + m + " X " + n);
+        enterMatrixRandom(matrix, m, n);
+        printMatrix(matrix, m, n);
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] > maxElement)
+                    maxElement = matrix[i][j];
+            }
+        }
+
+        System.out.println("Max элемент в матрице = " + maxElement);
+        System.out.println("Заменяем все нечетные элементы на max элемент.");
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] % 2 != 0)
+                    matrix[i][j] = maxElement;
+            }
+        }
+        printMatrix(matrix, m, n);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task16() {
+        System.out.println("16. Магическим квадратом порядка n называется квадратная\n" +
+                "матрица размера nxn, составленная из чисел 1, 2, 3, ..., n2\n" +
+                "так, что суммы по каждому столбцу, каждой строке и каждой из \n" +
+                "двух больших диагоналей равны между собой.\n" +
+                "Построить такой квадрат.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = 3;
+
+        int[][] matrix = new int[n][n];
+
+        System.out.println("Дана матрица " + n + " X " + n);
+        System.out.println("Строим магический квадрат:");
+
+        // "Сиамский метод"
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = 0;
+            }
+        }
+
+        int count = 1, y = 0, x = matrix.length / 2;
+
+        while (true) {
+
+            matrix[y][x] = count;
+            count++;
+
+            if (((y == 0) && (x >= n - 1)) && (matrix[n - 1][0] != 0)) {
+                y++;
+            } else {
+                y--;
+                if (y < 0) {
+                    y = n - 1;
+                }
+                x++;
+                if (x == n) {
+                    x = 0;
+                }
+                if (matrix[y][x] != 0) {
+                    y += 2;
+                    x--;
+                }
+            }
+
+            if (count == n * n + 1) break;
+        }
+
+        printMatrix(matrix, n, n);
+        System.out.println("=============================================================\n");
+    }
 }
