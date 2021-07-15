@@ -5,8 +5,8 @@ import static supporting.MyTools.printArray;
 public class SortArrays1D {
     public static void Tasks() {
         System.out.println("\t\t\t=== Одномерные массивы. Сортировки ===\n");
-        task01();
-//        task02();
+        //task01();
+        task02();
 //        task03();
 //        task04();
 //        task05();
@@ -61,5 +61,52 @@ public class SortArrays1D {
         System.out.println("=============================================================\n");
     }
 
+    private static void task02() {
+        System.out.println("2. Даны две последовательности a1 <= a2 <= ... <= an и\n" +
+                "b1 <= b2 <= ... <= bm. Образовать из них новую\n" +
+                "последовательность чисел так, чтобы она тоже была неубывающей.\n" +
+                "Примечание. Дополнительный массив не использовать.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * 10 + 1);
+        int m = (int) (Math.random() * 10 + 1);
+
+        int[] arrayA = new int[n];
+        int[] arrayB = new int[m];
+
+        System.out.println("Первый одномерный массив:");
+        for (int i = 0; i < arrayA.length; i++) {
+            arrayA[i] = (i + 1) * 1;
+        }
+        printArray(arrayA);
+        System.out.println("Второй одномерный массив:");
+        for (int i = 0; i < arrayB.length; i++) {
+            arrayB[i] = (i + 1) * 2;
+        }
+        printArray(arrayB);
+
+        int count = 0;
+        System.out.println("Новая последоваательность неубывающих чисел:");
+        int[] arrayAB = new int[arrayA.length + arrayB.length];
+        for (int i = 0; i < arrayA.length; i++)
+            arrayAB[count++] = arrayA[i];
+        for (int j = 0; j < arrayB.length; j++)
+            arrayAB[count++] = arrayB[j];
+
+        // Сортировка массива пузырьком
+        for (int i = 0; i < arrayAB.length - 1; i++) {
+            for (int j = 0; j < arrayAB.length - i - 1; j++) {
+                if (arrayAB[j] > arrayAB[j + 1]) {
+                    // меняем элементы местами
+                    int temp = arrayAB[j];
+                    arrayAB[j] = arrayAB[j + 1];
+                    arrayAB[j + 1] = temp;
+                }
+            }
+        }
+        printArray(arrayAB);
+
+        System.out.println("=============================================================\n");
+    }
 
 }
