@@ -37,7 +37,7 @@ public class MyTools {
     public static void enterArrayUser(int[] array) {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < array.length; i++) {
-            System.out.print("A[" + i + "] --> ");
+            System.out.print("[" + i + "] --> ");
             array[i] = sc.nextInt();
         }
     }
@@ -45,7 +45,7 @@ public class MyTools {
     public static void enterArrayUser(double[] array) {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < array.length; i++) {
-            System.out.print("A[" + i + "] --> ");
+            System.out.print("[" + i + "] --> ");
             array[i] = sc.nextDouble();
         }
     }
@@ -68,7 +68,7 @@ public class MyTools {
     public static void printArray(int[] array) {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         for (int i = 0; i < array.length; i++) {
-            System.out.printf("A[%2d] = %4d\n", i, array[i]);
+            System.out.printf("[%2d] = %4d\n", i, array[i]);
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
@@ -76,7 +76,7 @@ public class MyTools {
     public static void printArray(double[] array) {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         for (int i = 0; i < array.length; i++) {
-            System.out.printf("A[%2d] = %6.2f\n", i, array[i]);
+            System.out.printf("[%2d] = %6.2f\n", i, array[i]);
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
@@ -122,7 +122,4 @@ public class MyTools {
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
-
-
 }
-
