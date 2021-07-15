@@ -1,14 +1,15 @@
 package algorithm02.tasks;
 
+import static supporting.MyTools.enterArrayRandom;
 import static supporting.MyTools.printArray;
 
 public class SortArrays1D {
     public static void Tasks() {
         System.out.println("\t\t\t=== Одномерные массивы. Сортировки ===\n");
         //task01();
-        task02();
-//        task03();
-//        task04();
+        //task02();
+        //task03();
+        task04();
 //        task05();
 //        task06();
 //        task07();
@@ -21,6 +22,7 @@ public class SortArrays1D {
                 "включив второй массив между k-м и (k+1) - м элементами\n" +
                 "первого, при этом не используя дополнительный массив.");
         System.out.println("-------------------------------------------------------------");
+
         int an = 8;
         int bn = 5;
         int k = 3;
@@ -104,8 +106,86 @@ public class SortArrays1D {
                 }
             }
         }
-        printArray(arrayAB);
 
+        printArray(arrayAB);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task03() {
+        System.out.println("3. Сортировка выбором. Дана последовательность чисел\n" +
+                "a1 <= a2 <= ... <= an. Требуется переставить элементы так,\n" +
+                "чтобы они были расположены по убыванию. Для этого в массиве,\n" +
+                "начиная с первого, выбирается наибольший элемент и ставится\n" +
+                "на первое место, а первый - на место наибольшего.\n" +
+                "Затем, начиная со второго, эта процедура\n" +
+                "повторяется. Написать алгоритм сортировки выбором.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * 15 + 1);
+        int[] array = new int[n];
+
+        System.out.println("Дана последовательность чисел a1 <= a2 <= ... <= an:");
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (i + 1) * 2;
+        }
+        printArray(array);
+
+        System.out.println("Сортируем по убыванию, сортировкой выбором по убыванию:");
+        for (int i = 0; i < array.length; i++) {
+
+            int max = array[i];
+            int maxIndex = i;
+
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] > max) {
+                    max = array[j];
+                    maxIndex = j;
+                }
+            }
+
+            int temp = array[i];
+            array[i] = max;
+            array[maxIndex] = temp;
+        }
+        printArray(array);
+
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task04() {
+        System.out.println("4. Сортировка выбором. Дана последовательность чисел\n" +
+                "(a1 <= a2 <= ... <= an)?. Требуется переставить числа в,\n" +
+                "порядке возрастания. Для этого сравниваются два соседних\n" +
+                "числа ai и ai+1. Если ai > ai+1, то делается перестановка.\n" +
+                "Так продолжается до тех пор, пока все элементы нне станут\n" +
+                "расположены в порядке возрастания. Составить алгоритм \n" +
+                "сортировки, подсчитывая при этом количества перестановок.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * 15 + 1);
+        int[] array = new int[n];
+
+        System.out.println("Дана последовательность чисел a1, a2, ..., an:");
+        enterArrayRandom(array);
+        printArray(array);
+
+        int count = 0;
+        System.out.println("Сортируем обменами, eсли ai > ai+1:");
+        // Сортировка массива пузырьком
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    // меняем элементы местами
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    count++;
+                }
+            }
+        }
+        printArray(array);
+
+        System.out.println("Количество перестановок при сортировке = "+ count);
         System.out.println("=============================================================\n");
     }
 
