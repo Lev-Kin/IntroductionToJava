@@ -9,10 +9,10 @@ public class SortArrays1D {
         //task01();
         //task02();
         //task03();
-        task04();
-//        task05();
-//        task06();
-//        task07();
+        //task04();
+        //task05();
+        //task06();
+        task07();
 //        task08();
     }
 
@@ -185,8 +185,164 @@ public class SortArrays1D {
         }
         printArray(array);
 
-        System.out.println("Количество перестановок при сортировке = "+ count);
+        System.out.println("Количество перестановок при сортировке = " + count);
         System.out.println("=============================================================\n");
     }
+
+    private static void task05() {
+        System.out.println("5. Сортировка вставками. Дана последовательность чисел\n" +
+                "a1, a2, ..., an. Требуется переставить числа в порядке\n" +
+                "возрастания. Делается это следующим образом. Пусть\n" +
+                "a1, a2, ..., an - упорядоченная последовательность, т. е.\n" +
+                "a1 <= a2 <= ... <= an. Берется следующее число ai+1 и\n" +
+                "и вставляется в последовательность так, чтобы новая\n" +
+                "последовательность была тоже возрастающей. Процесс\n" +
+                "производится до тех пор, пока все элементы от i+1 до n\n" +
+                "не будут перебраны.\n" +
+                "?Примечание:\n" +
+                "Место помещения очередного элемента в отсортированную часть\n" +
+                "производить с помощью двоичного поиска. Двоичный поиск\n" +
+                "оформитть в виде отдельной функции?.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * 11 + 1) + 3;
+        int[] array = new int[n];
+
+        System.out.println("Дана последовательность чисел a1, a2, ..., an:");
+        enterArrayRandom(array);
+        printArray(array);
+
+        System.out.println("Сортируем вставками в порядке возростания:");
+        for (int i = 1; i < array.length; i++) {
+
+            int current = array[i];
+            int j = i - 1;
+
+            while (j >= 0 && current < array[j]) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            // в этой точке мы вышли, так что j так же -1
+            // или в первом элементе, где текущий >= a[j]
+            array[j + 1] = current;
+        }
+        printArray(array);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task06() {
+        System.out.println("6. Сортировка Шелла. Дан массив n действительных чисел.\n" +
+                "Требуется упорядочить его по возрастанию. Делается это\n" +
+                "следующим образом:\n" +
+                "сравниваются два соседних элемента ai и ai+1.\n" +
+                "Если ai <= ai+1, то продвигаются на один элемент вперед.\n" +
+                "Если ai >  ai+1, то производится перестановка и сдвигаются\n" +
+                "на один элемент назад. Составить алгоритм этой сортировки.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * 11 + 1) + 3;
+        double[] array = new double[n];
+
+        System.out.println("Дана последовательность чисел a1, a2, ..., an:");
+        enterArrayRandom(array);
+        printArray(array);
+
+        System.out.println("Сортировка Шелла элементы в порядке возростания:");
+        int j;
+        for (int gap = array.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < array.length; i++) {
+
+                double temp = array[i];
+
+                for (j = i; j >= gap && array[j - gap] > temp; j -= gap) {
+                    array[j] = array[j - gap];
+                }
+
+                array[j] = temp;
+            }
+        }
+        printArray(array);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task07() {
+        System.out.println("7. Пусть даны две неубывающие последовательности действительных\n" +
+                "чисел a1 <= a2 <= ... <= an и  b1 <= b2 <= ... <= bm.\n" +
+                "Требуется указать те места, на которые нужно вставлять\n" +
+                "элементы последовательности b1 <= b2 <= ... <= bm в первую\n" +
+                "последовательность так чтобы новая последовательность\n" +
+                "оставалась возрастающей.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * 11 + 1) + 3;
+        int m = (int) (Math.random() * 11 + 1) + 3;
+
+        double[] arrayA = new double[n];
+        double[] arrayB = new double[m];
+
+        System.out.println("1) Дана последовательность неубывающих чисел a1, a2, ..., an:");
+        for (int i = 0; i < arrayA.length; i++) {
+            double random_number = Math.random() * 100;
+            arrayA[i] = random_number;
+        }
+
+        // неубывающие последовательность A сортировка массива пузырьком
+        for (int i = 0; i < arrayA.length - 1; i++) {
+            for (int j = 0; j < arrayA.length - i - 1; j++) {
+                if (arrayA[j] > arrayA[j + 1]) {
+                    // меняем элементы местами
+                    double temp = arrayA[j];
+                    arrayA[j] = arrayA[j + 1];
+                    arrayA[j + 1] = temp;
+                }
+            }
+        }
+        printArray(arrayA);
+
+        System.out.println("2) Дана последовательность неубывающих чисел  b1, b2, ..., bm:");
+        for (int i = 0; i < arrayB.length; i++) {
+            double random_number = Math.random() * 100;
+            arrayB[i] = random_number;
+        }
+
+        // неубывающие последовательность B сортировка массива пузырьком
+        for (int i = 0; i < arrayB.length - 1; i++) {
+            for (int j = 0; j < arrayB.length - i - 1; j++) {
+                if (arrayB[j] > arrayB[j + 1]) {
+                    // меняем элементы местами
+                    double temp = arrayB[j];
+                    arrayB[j] = arrayB[j + 1];
+                    arrayB[j + 1] = temp;
+                }
+            }
+        }
+        printArray(arrayB);
+
+        System.out.println("Образуюм новую последовательность и указываем места в которые \n" +
+                "вставляем из последовательности B элементы в послодовательноcть\n" +
+                "А сохраняя возростание");
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        int k = 0;
+        for (int i = 0; i < arrayA.length; i++) {
+            boolean flagIns = true;
+            for (int j = 0; j < arrayB.length; j++) {
+                if (arrayA[i] < arrayB[j]) {
+                    System.out.printf("a[%2d] <-- b[%2d]\n", i, j);
+                    arrayA[i] = arrayB[j];
+                    flagIns = false;
+                    break;
+                }
+            }
+            if (flagIns) {
+                System.out.printf("a[%2d] <-> a[%2d]\n", i, i);
+            }
+        }
+
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Новая последовательность:");
+        printArray(arrayA);
+        System.out.println("=============================================================\n");
+    }
+
 
 }
