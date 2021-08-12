@@ -1,19 +1,18 @@
 package algorithm02.tasks;
 
-import static supporting.MyTools.enterArrayRandom;
-import static supporting.MyTools.printArray;
+import static supporting.MyTools.*;
 
 public class SortArrays1D {
     public static void Tasks() {
         System.out.println("\t\t\t=== Одномерные массивы. Сортировки ===\n");
-        //task01();
-        //task02();
-        //task03();
-        //task04();
-        //task05();
-        //task06();
+        task01();
+        task02();
+        task03();
+        task04();
+        task05();
+        task06();
         task07();
-//        task08();
+        task08();
     }
 
     private static void task01() {
@@ -157,12 +156,12 @@ public class SortArrays1D {
                 "(a1 <= a2 <= ... <= an)?. Требуется переставить числа в,\n" +
                 "порядке возрастания. Для этого сравниваются два соседних\n" +
                 "числа ai и ai+1. Если ai > ai+1, то делается перестановка.\n" +
-                "Так продолжается до тех пор, пока все элементы нне станут\n" +
+                "Так продолжается до тех пор, пока все элементы не станут\n" +
                 "расположены в порядке возрастания. Составить алгоритм \n" +
                 "сортировки, подсчитывая при этом количества перестановок.");
         System.out.println("-------------------------------------------------------------");
 
-        int n = (int) (Math.random() * 15 + 1);
+        int n = (int) (Math.random() * 15 + 1) + 3;
         int[] array = new int[n];
 
         System.out.println("Дана последовательность чисел a1, a2, ..., an:");
@@ -318,9 +317,9 @@ public class SortArrays1D {
         }
         printArray(arrayB);
 
-        System.out.println("Образуюм новую последовательность и указываем места в которые \n" +
-                "вставляем из последовательности B элементы в послодовательноcть\n" +
-                "А сохраняя возростание");
+        System.out.println("3) Образуюм новую последовательность и указываем места\n" +
+                "в которые вставляем из последовательности B элементы\n" +
+                "в послодовательноcть А сохраняя возростание:");
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         int k = 0;
         for (int i = 0; i < arrayA.length; i++) {
@@ -339,10 +338,116 @@ public class SortArrays1D {
         }
 
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
-        System.out.println("Новая последовательность:");
+        System.out.println("4) Новая последовательность:");
         printArray(arrayA);
         System.out.println("=============================================================\n");
     }
 
+    private static void task08() {
+        System.out.println("8. Даны дроби p1/q1, p2/q2, ..., pn/qn (pi, qi - натуральные)\n" +
+                "Составить программу, которая приводит эти дроби к общему\n" +
+                "знаменателю и упорядочивает их в порядке возрастания.");
+        System.out.println("-------------------------------------------------------------");
 
+        int n = (int) (Math.random() * 11 + 1) + 2;
+
+        int[] arrayP = new int[n];
+        int[] arrayQ = new int[n];
+        double[] arraySort = new double[n];
+
+        System.out.println("1) Даны дроби p1/q1, p2/q2, ..., pn/qn:");
+        for (int i = 0; i < arrayP.length; i++) {
+            arrayP[i] = (int) (Math.random() * 11 + 3);
+        }
+
+        for (int i = 0; i < arrayQ.length; i++) {
+            arrayQ[i] = (int) (Math.random() * 11 + 3);
+        }
+
+        // Исходный массив
+        for (int i = 0; i < arrayQ.length; i++) {
+            if (i % 5 == 0 && i != 0) {
+                System.out.println();
+            }
+
+            System.out.printf("%2d/%2d ; ", arrayP[i], arrayQ[i]);
+        }
+        System.out.println();
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("2) Найдем наименьшее общее кратное знаменателей дробей НОК:");
+
+        int nod = 0;
+        int nok = 0;
+        int noz = 0;
+        int maxNok = 0;
+        int saveArrayQzero = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (i == 0)
+                saveArrayQzero = arrayQ[0];
+
+            if (i < n - 1) {
+                nod = gcd(arrayQ[0], arrayQ[i + 1]);
+                nok = (arrayQ[0] * arrayQ[i + 1]) / nod;
+                noz = nok / arrayQ[0];
+
+                arrayQ[0] = arrayQ[0] * noz;
+
+                if (maxNok < nok)
+                    maxNok = nok;
+            }
+        }
+        System.out.println("Обший HOK для всех дробей = " + maxNok);
+        arrayQ[0] = saveArrayQzero;
+
+        // Приводим все дроби к общему знаменателю
+        for (int i = 0; i < arrayP.length; i++) {
+
+            int multiplier = maxNok / arrayQ[i];
+
+            arrayP[i] = arrayP[i] * multiplier;
+            arrayQ[i] = arrayQ[i] * multiplier;
+        }
+
+        // Массив для сортировки
+        for (int i = 0; i < arraySort.length; i++) {
+            arraySort[i] = (double) arrayP[i] / (double) arrayQ[i];
+        }
+
+        // Сортировка массива пузырьком
+        for (int i = 0; i < arraySort.length - 1; i++) {
+            for (int j = 0; j < arraySort.length - i - 1; j++) {
+
+                if (arraySort[j] > arraySort[j + 1]) {
+
+                    double temp = arraySort[j];
+                    arraySort[j] = arraySort[j + 1];
+                    arraySort[j + 1] = temp;
+
+                    int tempP = arrayP[j];
+                    arrayP[j] = arrayP[j + 1];
+                    arrayP[j + 1] = tempP;
+
+                    int tempQ = arrayQ[j];
+                    arrayQ[j] = arrayQ[j + 1];
+                    arrayQ[j + 1] = tempQ;
+
+                }
+            }
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("3) Сортировка по возрастанию c общим знаменателем:");
+        for (int i = 0; i < arrayQ.length; i++) {
+
+            if (i % 5 == 0 && i != 0)
+                System.out.println();
+
+            System.out.printf("%2d/%2d ; ", arrayP[i], arrayQ[i]);
+        }
+
+        System.out.println();
+        System.out.println("=============================================================\n");
+    }
 }
