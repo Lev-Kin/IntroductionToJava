@@ -380,7 +380,7 @@ public class SortArrays1D {
         int nod = 0;
         int nok = 0;
         int noz = 0;
-        int maxNok = 0;
+        int maxNok = Integer.MIN_VALUE;
         int saveArrayQzero = 0;
 
         for (int i = 0; i < n; i++) {

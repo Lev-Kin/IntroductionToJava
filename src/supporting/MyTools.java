@@ -123,7 +123,7 @@ public class MyTools {
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
     }
 
-    // Наибольший общий делитель (НОД)
+    // НОД (Наибольший общий делитель) или gcd (Greatest Common Divisor)
     public static int gcd(int a, int b) {
 
         while (a != 0 && b != 0) {
@@ -132,6 +132,31 @@ public class MyTools {
             else
                 b = b % a;
         }
+
         return a + b;
     }
+
+    // НОК (Наименьшее общее кратное) или lcm (Least Common Multiple)
+    public static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+
+    // НОД (Наибольший общий делитель) для N чисел
+    public static int gcdN(int[] array, int n) {
+
+        int nod = 0;
+        int nodForAll = Integer.MAX_VALUE;
+
+        for (int i = 0; i < n; i++) {
+            if (i < n - 1) {
+                nod = gcd(array[0], array[i + 1]);
+
+                if (nodForAll > nod)
+                    nodForAll = nod;
+            }
+        }
+
+        return nodForAll;
+    }
+
 }

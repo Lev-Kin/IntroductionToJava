@@ -2,6 +2,7 @@ package algorithm02;
 
 import algorithm02.tasks.Arrays1D;
 import algorithm02.tasks.ArraysND;
+import algorithm02.tasks.Decomposition;
 import algorithm02.tasks.SortArrays1D;
 
 public class Algorithmization {
@@ -12,7 +13,7 @@ public class Algorithmization {
         System.out.println();
         //Arrays1D.Tasks();
         //ArraysND.Tasks();
-        SortArrays1D.Tasks();
-
+        //SortArrays1D.Tasks();
+        Decomposition.Tasks();
     }
 }
