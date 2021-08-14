@@ -159,4 +159,39 @@ public class MyTools {
         return nodForAll;
     }
 
+    // Метод вычисления площади правильного шестиугольника
+    public static double squareOfRegularHexagon(double side) {
+        double square = 0;
+
+        square = ((3.0 * Math.sqrt(3.0)) / 2.0) * side * side;
+
+        return square;
+    }
+
+    public static double maxPointDistance(double[][] point, int n) {
+
+        double maxDistance = Double.MIN_VALUE;
+        double distancePoint = 0;
+        int imax = -1;
+        int jmax = -1;
+
+        for (int i = 0; i < n; i++)
+            for (int j = i + 1; j < n; j++) {
+
+                distancePoint = Math.sqrt(Math.pow((point[j][0] - point[i][0]), 2) +
+                        Math.pow((point[j][1] - point[i][1]), 2));
+
+                if (distancePoint > maxDistance) {
+                    maxDistance = distancePoint;
+                    imax = i;
+                    jmax = j;
+                }
+            }
+
+        System.out.printf("MAX растояния между точкой %2d и %2d точкой", imax + 1, jmax + 1);
+
+        // maxDistance / 2 - проверил на листе бумаги надо делить
+        return maxDistance / 2;
+    }
+
 }
