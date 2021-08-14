@@ -8,9 +8,9 @@ public class Decomposition {
         //task01();
         //task02();
         //task03();
-        task04();
+        //task04();
         task05();
-//        task06();
+        task06();
 //        task07();
 //        task08();
     }
@@ -128,7 +128,7 @@ public class Decomposition {
         // метод нохождения max растояния между n точками
         double result = maxPointDistance(point, n);
 
-        System.out.printf("\nДлина = %.2f\n",result);
+        System.out.printf("\nДлина = %.2f\n", result);
         System.out.println("=============================================================\n");
     }
 
@@ -139,9 +139,48 @@ public class Decomposition {
                 "но больше всех других элементов).");
         System.out.println("-------------------------------------------------------------");
 
+        int n = (int) (Math.random() * 8 + 1) + 2;
+        int[] array = new int[n];
+
+        System.out.println("Дан массив размерность которого равна " + n);
+        enterArrayRandom(array);
+        printArray(array);
+
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+
+                if (array[j] > array[j + 1]) {
+
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+
+        int maxNumber = array[array.length - 1];
+
+        int result = 0;
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i] < maxNumber) {
+                result = array[i];
+                break;
+            }
+        }
+
+        System.out.println("Второе по величене число в массиве = " + result);
         System.out.println("=============================================================\n");
     }
 
+    private static void task06(){
+        System.out.println("6. Написать метод(методы), проверяющий, являются ли данные\n" +
+                "три числа взаимно простыми.");
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("=============================================================\n");
 
 
     }
+
+
+}
