@@ -124,7 +124,20 @@ public class MyTools {
     }
 
     // НОД (Наибольший общий делитель) или gcd (Greatest Common Divisor)
-    public static int gcd(int a, int b) {
+    public static int gcd(int first, int second) {
+
+        int a;
+        int b;
+
+        if (first < 0)
+            a = Math.abs(first);
+        else
+            a = first;
+
+        if (second < 0)
+            b = Math.abs(second);
+        else
+            b = first;
 
         while (a != 0 && b != 0) {
             if (a > b)
@@ -192,6 +205,28 @@ public class MyTools {
 
         // maxDistance / 2 - проверил на листе бумаги надо делить
         return maxDistance / 2;
+    }
+
+    public static boolean numbersCoprime(int[] array, int n) {
+        int nodN = gcdN(array, n);
+
+        if (nodN != 1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public static long sumFactorialOdd(int n) {
+
+        long sum = 0;
+        long factorial = 1;
+
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+            if (i % 2 != 0) sum += factorial;
+        }
+        return sum;
     }
 
 }

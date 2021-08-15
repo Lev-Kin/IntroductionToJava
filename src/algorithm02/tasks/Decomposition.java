@@ -9,10 +9,10 @@ public class Decomposition {
         //task02();
         //task03();
         //task04();
-        task05();
-        task06();
-//        task07();
-//        task08();
+        //task05();
+        //task06();
+        task07();
+        task08();
     }
 
     private static void task01() {
@@ -108,7 +108,7 @@ public class Decomposition {
 
         int n = (int) (Math.random() * 5 + 1) + 2;
         double[][] point = new double[n][2];
-        System.out.println("1) Заданое количество точек равно " + 4);
+        System.out.println("1) Заданое количество точек равно " + n);
 
         //double[][] point = {{-5, 3}, {6, 5}, {-6, -5}, {4, 3}}; // max между 2 и 3 = 7,81
         for (int i = 0; i < n; i++) {
@@ -177,10 +177,58 @@ public class Decomposition {
                 "три числа взаимно простыми.");
         System.out.println("-------------------------------------------------------------");
 
+        int n = 3;
+        int[] array = new int[n];
+        enterArrayRandom(array);
+
+        System.out.printf("Дано %d числа:\n", n);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + "; ");
+        }
+        System.out.println();
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.print("НОД(");
+        for (int i = 0; i < array.length; i++) {
+            if (i != array.length - 1) {
+                System.out.print(array[i] + "; ");
+            } else {
+                System.out.print(array[i] + ") = ");
+            }
+        }
+        int nodN = gcdN(array, n);
+        System.out.print(nodN + "\n");
+
+        // метод провеки являются ли три числа взаимно простыми
+       if(numbersCoprime(array, n) == true)
+           System.out.println("Числа взаимно простые.");
+       else
+           System.out.println("Числа НЕ взоимно простые.");
+
         System.out.println("=============================================================\n");
-
-
     }
 
+    private static void task07() {
+        System.out.println("7. Написать метод(методы) для вычисления суммы факториалов\n" +
+                "всех нечетных чисел от 1 до 9.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = 9;
+
+        System.out.println("Сумма факториала нечетных чисел от 1 до 9 = "+ sumFactorialOdd(n));
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task08(){
+        System.out.println("8. Задан массив D. Определить следующие суммы:\n" +
+                "D[l] + D[2] + D[3]; D[3] + D[4] + D[5]; D[4] +D[5] +D[6].\n" +
+                "Пояснение.\n" +
+                "Составить метод(ы) для вычисления суммы трех последовательно\n" +
+                "расположенных элементов массива с номерами от k до m.");
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("=============================================================\n");
+
+    }
 
 }
