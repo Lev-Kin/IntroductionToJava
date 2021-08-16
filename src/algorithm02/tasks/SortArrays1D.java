@@ -1,6 +1,7 @@
 package algorithm02.tasks;
 
 import static supporting.MyTools.*;
+import static supporting.МуMethods.gcd;
 
 public class SortArrays1D {
     public static void Tasks() {

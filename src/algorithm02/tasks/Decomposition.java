@@ -1,6 +1,7 @@
 package algorithm02.tasks;
 
 import static supporting.MyTools.*;
+import static  supporting.МуMethods.*;
 
 public class Decomposition {
     public static void Tasks() {
@@ -11,8 +12,9 @@ public class Decomposition {
         //task04();
         //task05();
         //task06();
-        task07();
+        //task07();
         task08();
+        task09();
     }
 
     private static void task01() {
@@ -172,7 +174,7 @@ public class Decomposition {
         System.out.println("=============================================================\n");
     }
 
-    private static void task06(){
+    private static void task06() {
         System.out.println("6. Написать метод(методы), проверяющий, являются ли данные\n" +
                 "три числа взаимно простыми.");
         System.out.println("-------------------------------------------------------------");
@@ -200,10 +202,10 @@ public class Decomposition {
         System.out.print(nodN + "\n");
 
         // метод провеки являются ли три числа взаимно простыми
-       if(numbersCoprime(array, n) == true)
-           System.out.println("Числа взаимно простые.");
-       else
-           System.out.println("Числа НЕ взоимно простые.");
+        if (numbersCoprime(array, n) == true)
+            System.out.println("Числа взаимно простые.");
+        else
+            System.out.println("Числа НЕ взоимно простые.");
 
         System.out.println("=============================================================\n");
     }
@@ -215,20 +217,81 @@ public class Decomposition {
 
         int n = 9;
 
-        System.out.println("Сумма факториала нечетных чисел от 1 до 9 = "+ sumFactorialOdd(n));
+        System.out.println("Сумма факториала нечетных чисел от 1 до 9 = " + sumFactorialOdd(n));
         System.out.println("=============================================================\n");
     }
 
-    private static void task08(){
+    private static void task08() {
         System.out.println("8. Задан массив D. Определить следующие суммы:\n" +
-                "D[l] + D[2] + D[3]; D[3] + D[4] + D[5]; D[4] +D[5] +D[6].\n" +
+                "D[l] + D[2] + D[3]; D[3] + D[4] + D[5]; D[4] + D[5] + D[6].\n" +
                 "Пояснение.\n" +
                 "Составить метод(ы) для вычисления суммы трех последовательно\n" +
                 "расположенных элементов массива с номерами от k до m.");
         System.out.println("-------------------------------------------------------------");
 
-        System.out.println("=============================================================\n");
+        int count = 0;
+        int sum = 0;
 
+        int[] array = new int[7];
+        enterArrayRandom(array);
+        System.out.println("Задан массив D");
+        printArray(array);
+
+        while (count != 3) {
+
+            if (count == 0) {
+                int k = 1;
+                int m = 3;
+
+                System.out.printf("Сумма промежутака D[%d] - D[%d] = %d\n", k, m, sumGapKM(array, k, m));
+                count++;
+            }
+
+            if (count == 1) {
+                int k = 3;
+                int m = 5;
+
+                System.out.printf("Сумма промежутака D[%d] - D[%d] = %d\n", k, m, sumGapKM(array, k, m));
+                count++;
+            }
+
+            if (count == 2) {
+                int k = 4;
+                int m = 6;
+
+                System.out.printf("Сумма промежутака D[%d] - D[%d] = %d\n", k, m, sumGapKM(array, k, m));
+                count++;
+            }
+        }
+
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task09() {
+        System.out.println("9. Даны числа A, B, C, D — длины сторон четырехугольника.\n" +
+                "Написать метод(методы) вычисления его площади,\n" +
+                "если угол между сторонами длиной A и B — прямой.");
+        System.out.println("-------------------------------------------------------------");
+
+        // Стороны четырехугольника ((5, 5, 5, 5) = 25; (3, 4, 12, 13) = 36)
+        double a = (int) (Math.random() * 10 + 1);
+        double b = (int) (Math.random() * 10 + 2);
+
+        double k = 0;
+        if (a >= b)
+            k = a;
+        else
+            k = b;
+
+        double c = (int) (Math.random() * 10 + 3 + k);
+        double d = (int) (Math.random() * 10 + 4 + k);
+
+        System.out.println("Даны числа дилины сторон четырехугольника:");
+        System.out.printf("A = %.0f; B = %.0f; C = %.0f; D = %.0f\n", a, b, c, d);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.printf("Площадь четырехугольнока = %.2f\n", squareOfQuadrangle(a, b, c, d));
+        System.out.println("=============================================================\n");
     }
 
 }
