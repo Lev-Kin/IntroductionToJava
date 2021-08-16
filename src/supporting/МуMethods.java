@@ -16,7 +16,7 @@ public class МуMethods {
         if (second < 0)
             b = Math.abs(second);
         else
-            b = first;
+            b = second;
 
         while (a != 0 && b != 0) {
             if (a > b)
@@ -132,6 +132,46 @@ public class МуMethods {
         return (s1 + s2);
     }
 
+    public static int amountDigitsOfNumbers(int n) {
+
+        int amountDigits = 0;
+
+        while (n > 0) {
+            n /= 10;
+            amountDigits++;
+        }
+
+        return amountDigits;
+    }
+
+    public static int[] digitsOfNumbersInArray(int n) {
+
+        int amountDigit = amountDigitsOfNumbers(n);
+        int[] arrayDigits = new int[amountDigit];
+        int digit = 0;
+
+        int divider = 1;
+        int k = 1;
+
+        while (k != amountDigit) {
+            divider *= 10;
+            k++;
+        }
+
+        for (int i = 0; i < arrayDigits.length; i++) {
+
+            digit = n / divider;
+
+            while (digit >= 10)
+                digit %= 10;
+
+            arrayDigits[i] = digit;
+
+            divider /= 10;
+        }
+
+        return arrayDigits;
+    }
 
 
 }

@@ -1,7 +1,8 @@
 package algorithm02.tasks;
 
-import static supporting.MyTools.*;
-import static  supporting.МуMethods.*;
+import static supporting.MyTools.enterArrayRandom;
+import static supporting.MyTools.printArray;
+import static supporting.МуMethods.*;
 
 public class Decomposition {
     public static void Tasks() {
@@ -13,8 +14,10 @@ public class Decomposition {
         //task05();
         //task06();
         //task07();
-        task08();
-        task09();
+        //task08();
+        //task09();
+        task10();
+        task11();
     }
 
     private static void task01() {
@@ -293,5 +296,37 @@ public class Decomposition {
         System.out.printf("Площадь четырехугольнока = %.2f\n", squareOfQuadrangle(a, b, c, d));
         System.out.println("=============================================================\n");
     }
+
+    private static void task10() {
+        System.out.println("10. Дано натуральное число N.\n" +
+                "Написать метод(методы) для формирования массива,\n" +
+                "элементами которого являются цифры числа N.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * (Integer.MAX_VALUE - 100) + 100); // int max 2147483647
+
+        System.out.println("Дано натуральное число --> " + n);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("Количество цифр в числе = " + amountDigitsOfNumbers(n));
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int[] array = digitsOfNumbersInArray(n);
+        System.out.println("Массив сформирован цифры числа следущие:");
+        printArray(array);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task11() {
+        System.out.println("11. Написать метод(методы), определяющий,\n" +
+                "в каком из данных двух чисел больше цифр.");
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("=============================================================\n");
+    }
+
+
+
+
 
 }
