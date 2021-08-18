@@ -16,8 +16,11 @@ public class Decomposition {
         //task07();
         //task08();
         //task09();
-        task10();
-        task11();
+        //task10();
+        //task11();
+        //task12();
+        task13();
+        task14();
     }
 
     private static void task01() {
@@ -322,11 +325,84 @@ public class Decomposition {
                 "в каком из данных двух чисел больше цифр.");
         System.out.println("-------------------------------------------------------------");
 
+        int a = (int) (Math.random() * (Integer.MAX_VALUE - 100) + 100);
+        int b = (int) (Math.random() * (Integer.MAX_VALUE - 100) + 100);
+
+        System.out.println("Дано число A = " + a + " и B = " + b);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int amountDigitsA = amountDigitsOfNumbers(a);
+        int amountDigitsB = amountDigitsOfNumbers(b);
+
+        System.out.println("Количество цифр в числе  А = " + amountDigitsA);
+        System.out.println("Количество цифр в числе  B = " + amountDigitsB);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        // Метод определяющий, в коком из данных двух чисел больше цифр
+        int result = longerNumberOfTwo(a, b);
+
+        if (a == result)
+            System.out.println("Количество цифр числа А больше числа B");
+        else if (b == result)
+            System.out.println("Количество цифр числа B больше числа A");
+        else
+            System.out.println("Количество цифр чилса А и В равно");
+
         System.out.println("=============================================================\n");
     }
 
+    private static void task12() {
+        System.out.println("12. Даны натуральные числа К и N. Написать метод(методы)\n" +
+                "формирования массива А, элементами которого являются числа,\n" +
+                "сумма цифр которых равна К и которые не большее N.");
+        System.out.println("-------------------------------------------------------------");
 
+        int k = (int) (Math.random() * 10 + 1);
+        int n = (int) (Math.random() * 1000 + 1);
 
+        System.out.println("Дано натуральное число К = " + k + " и N = " + n);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("Массив А сформирован:");
+        int[] arrayA = arrayDigitsSumKminN(k, n);
+        printArray(arrayA);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task13() {
+        System.out.println("13. Два простых числа называются «близнецами», если они\n" +
+                "отличаются друг от друга на 2 (например, 41 и 43).\n" +
+                "Найти и напечатать все пары «близнецов» из отрезка [n,2n],\n" +
+                "где n - заданное натуральное число больше 2.\n" +
+                "Для решения задачи использовать декомпозицию.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * 1000 + 3); // больше 2
+
+        int a = n;
+        int b = n * 2;
+
+        System.out.printf("Дан отрезок натуральных чисел [%d, %d]\n", a, b);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int[][] arrayT = twinsPrimeNumberArray(a, b);
+
+        System.out.println("Числа близницы простых чисел:");
+        for (int i = 0; i < arrayT.length; i++) {
+            System.out.printf("%d\t--> {%d\t; %d\t}\n", i+1, arrayT[i][0], arrayT[i][1]);
+        }
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task14() {
+        System.out.println("14. Натуральное число, в записи которого n цифр, называется\n" +
+                "числом Армстронга, если сумма его цифр, возведенная в степень\n" +
+                "n, равна самому числу. Найти все числа Армстронга от 1 до k.\n" +
+                "Для решения задачи использовать декомпозицию.");
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("=============================================================\n");
+    }
 
 
 }

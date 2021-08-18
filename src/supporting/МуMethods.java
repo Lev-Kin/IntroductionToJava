@@ -173,5 +173,107 @@ public class МуMethods {
         return arrayDigits;
     }
 
+    // Метод определяющий, в коком из данных двух чисел больше цифр
+    public static int longerNumberOfTwo(int a, int b) {
+        int longerNumger = 0;
+
+        int amountDigitsA = amountDigitsOfNumbers(a);
+        int amountDigitsB = amountDigitsOfNumbers(b);
+
+        if (amountDigitsA > amountDigitsB)
+            longerNumger = a;
+        else if (amountDigitsA < amountDigitsB)
+            longerNumger = b;
+        else
+            return -1;
+
+        return longerNumger;
+    }
+
+    // Сумма цифр натурального числа
+    public static int sumDigitsOfNumber(int a) {
+        int sumDigits = 0;
+
+        int[] array = digitsOfNumbersInArray(a);
+
+        for (int i = 0; i < array.length; i++)
+            sumDigits += array[i];
+
+        return sumDigits;
+    }
+
+    // Метод формирования массива А для 12 задания (2. Algorithmization - Декомпозиция)
+    public static int[] arrayDigitsSumKminN(int k, int n) {
+
+        int count = 0;
+        int cheсkSumK = 0;
+
+        for (int i = 1; i < n; i++) {
+
+            cheсkSumK = sumDigitsOfNumber(i);
+
+            if (cheсkSumK == k) {
+                count++;
+            }
+        }
+
+        int[] array = new int[count];
+        int j = 0;
+        cheсkSumK = 0;
+
+        for (int i = 1; i < n; i++) {
+
+            cheсkSumK = sumDigitsOfNumber(i);
+
+            if (cheсkSumK == k) {
+                array[j] = i;
+
+                j++;
+            }
+        }
+
+        return array;
+    }
+
+    // Проверка является ли чило простым
+    public static boolean isPrimeNumber(int n) {
+        if (n > 1) {
+            for (int i = 2; i < n; i++) {
+                if (n % i == 0)
+                    return false;
+            }
+
+        } else
+            return false;
+
+        return true;
+    }
+
+    // Проверка являются ли числа "близницами"
+    public static int[][] twinsPrimeNumberArray(int a, int b) {
+
+        int cout = 0;
+
+        for (int i = a; i < b; i++) {
+            if (isPrimeNumber(i) == true && isPrimeNumber(i + 2) == true) {
+                cout++;
+            }
+        }
+
+        int[][] arrayTwins = new int[cout][2];
+
+        int j = 0;
+
+        for (int i = a; i < b; i++) {
+            if (isPrimeNumber(i) == true && isPrimeNumber(i + 2) == true) {
+                arrayTwins[j][0] = i;
+                arrayTwins[j][1] = i + 2;
+                j++;
+            }
+        }
+
+        return arrayTwins;
+    }
+
 
 }
