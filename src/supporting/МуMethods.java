@@ -275,5 +275,63 @@ public class МуMethods {
         return arrayTwins;
     }
 
+    // метод проверки на число Амстронга
+    public static boolean isArmstrongNumber(int n) {
+
+        int[] digit = digitsOfNumbersInArray(n);
+
+        double sumCubeDigit = 0;
+
+        for (int i = 0; i < digit.length; i++) {
+            sumCubeDigit += Math.pow(digit[i], digit.length);
+        }
+
+        if (sumCubeDigit != n)
+            return false;
+
+        return true;
+    }
+
+    // Для 16 задания (2. Algorithmization - Декомпозиция)
+    public static int sumOfOddNumbers(int n) {
+
+        int startNumber = (int) Math.pow(10, n - 1);
+        int sumOfOddNumbers = 0;
+
+        for (int number = startNumber; number < startNumber * 10; number++) {
+
+            int temp = number;
+            int numberLength = amountDigitsOfNumbers(number);
+
+            while (temp != 0) {
+                if ((temp % 10) % 2 != 0) {
+                    numberLength--;
+                }
+
+                temp /= 10;
+            }
+
+            if (numberLength == 0) {
+                sumOfOddNumbers += number;
+            }
+        }
+
+        return sumOfOddNumbers;
+    }
+
+    // Количество четных цифр натурального числа
+    public static int amountEvenDigitsOfNumber(int a) {
+
+        int amountEvenDigits = 0;
+
+        int[] array = digitsOfNumbersInArray(a);
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0)
+                amountEvenDigits++;
+        }
+
+        return amountEvenDigits;
+    }
 
 }

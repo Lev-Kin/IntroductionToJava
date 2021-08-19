@@ -19,8 +19,11 @@ public class Decomposition {
         //task10();
         //task11();
         //task12();
-        task13();
-        task14();
+        //task13();
+        //task14();
+        //task15();
+        task16();
+        task17();
     }
 
     private static void task01() {
@@ -389,7 +392,7 @@ public class Decomposition {
 
         System.out.println("Числа близницы простых чисел:");
         for (int i = 0; i < arrayT.length; i++) {
-            System.out.printf("%d\t--> {%d\t; %d\t}\n", i+1, arrayT[i][0], arrayT[i][1]);
+            System.out.printf("%d\t--> {%d\t; %d\t}\n", i + 1, arrayT[i][0], arrayT[i][1]);
         }
         System.out.println("=============================================================\n");
     }
@@ -401,8 +404,121 @@ public class Decomposition {
                 "Для решения задачи использовать декомпозицию.");
         System.out.println("-------------------------------------------------------------");
 
+        int k = (int) (Math.random() * 10000000 + 1);
+
+        System.out.println("Дан промежуток от 1 до " + k);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Числа Амстронга следущие:");
+
+        int count = 0;
+        for (int i = 1; i < k + 1; i++) {
+            if (isArmstrongNumber(i) == true) {
+
+                if (count % 5 == 0 && count != 0) {
+                    System.out.println();
+                }
+
+                System.out.print(i + " | ");
+
+                count++;
+            }
+        }
+
+        System.out.println();
         System.out.println("=============================================================\n");
     }
 
+    private static void task15() {
+        System.out.println("15. Найти все натуральные n-значные числа, цифры в которых\n" +
+                "образуют строго возрастающую последовательность\n" +
+                "(например, 1234, 5789).\n" +
+                "Для решения задачи использовать декомпозицию.");
+        System.out.println("-------------------------------------------------------------");
 
+        int n = (int) (Math.random() * 4 + 2);
+
+        System.out.println("Дано n-значные числа = " + n);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int startNumber = (int) Math.pow(10, n - 1);
+        int count = 0;
+
+        System.out.println("Значение числа строгой возрастающй последовательностью:");
+        for (int i = startNumber; i < startNumber * 10; i++) {
+
+            int amountGrowingNumbers = 0;
+
+            for (int j = 1; j < n; j++) {
+
+                int digitR = (int) (i / Math.pow(10, j - 1)) % 10;
+                int digitL = (int) (i / Math.pow(10, j)) % 10;
+
+                if (digitL < digitR) {
+                    amountGrowingNumbers++;
+                }
+
+                if (amountGrowingNumbers == n - 1) {
+
+                    if (count % 5 == 0 && count != 0) {
+                        System.out.println();
+                    }
+
+                    System.out.print(i + " | ");
+
+                    count++;
+                }
+            }
+        }
+
+        System.out.println();
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task16() {
+        System.out.println("16. Написать программу, определяющую сумму n - значных чисел,\n" +
+                "содержащих только нечетные цифры.\n" +
+                "Определить также, сколько четных цифр в найденной сумме.\n" +
+                "Для решения задачи использовать декомпозицию.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * 6 + 1);
+
+        System.out.println("Дано n-значные числа = " + n);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int sum = sumOfOddNumbers(n);
+        System.out.println("Сумма = " + sum);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("Число чётных цифр в сумме = " + amountEvenDigitsOfNumber(sum));
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task17() {
+        System.out.println("17. Из заданного числа вычти сумму его цифр.\n" +
+                "Из результата вновь вычли сумму его цифр и т.д.\n" +
+                "Сколько таких действий надо произвести, чтобы получился нуль?\n" +
+                "Для решения задачи использовать декомпозицию.");
+        System.out.println("-------------------------------------------------------------");
+
+        int n = (int) (Math.random() * (Integer.MAX_VALUE - 100) + 100);
+        System.out.println("Дано натуральное число N = " + n);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int temp = n;
+        int count = 0;
+        int sum = 0;
+
+        while (temp != 0) {
+
+            sum = sumDigitsOfNumber(temp);
+
+            temp -= sum;
+
+            count++;
+        }
+
+        System.out.println("Было произведенино "+ count + " действий.");
+        System.out.println("=============================================================\n");
+    }
 }
