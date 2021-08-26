@@ -11,9 +11,9 @@ public class Algorithmization {
         System.out.println("\t\t\t===|| 02 Algorithmization ||===");
         System.out.println("-------------------------------------------------------------");
         System.out.println();
-        //Arrays1D.Tasks();
-        //ArraysND.Tasks();
-        //SortArrays1D.Tasks();
+        Arrays1D.Tasks();
+        ArraysND.Tasks();
+        SortArrays1D.Tasks();
         Decomposition.Tasks();
     }
 }

@@ -7,21 +7,21 @@ import static supporting.МуMethods.*;
 public class Decomposition {
     public static void Tasks() {
         System.out.println("\t\t=== Декомпозиция с использованием метов ===\n");
-        //task01();
-        //task02();
-        //task03();
-        //task04();
-        //task05();
-        //task06();
-        //task07();
-        //task08();
-        //task09();
-        //task10();
-        //task11();
-        //task12();
-        //task13();
-        //task14();
-        //task15();
+        task01();
+        task02();
+        task03();
+        task04();
+        task05();
+        task06();
+        task07();
+        task08();
+        task09();
+        task10();
+        task11();
+        task12();
+        task13();
+        task14();
+        task15();
         task16();
         task17();
     }
