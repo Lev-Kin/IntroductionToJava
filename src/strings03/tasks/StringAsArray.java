@@ -1,15 +1,14 @@
 package strings03.tasks;
 
-import java.util.Arrays;
-
 import static supporting.MyMethodsString.convertCamelCaseInSnakeCase;
+import static supporting.MyMethodsString.replaceWordAnoterWordInText;
 
 public class StringAsArray {
     public static void Tasks() {
         System.out.println("\t=== Работа со строкой как с массивом символ ===\n");
         task01();
         task02();
-//        task03();
+        task03();
 //        task04();
 //        task05();
 //        task06();
@@ -47,9 +46,25 @@ public class StringAsArray {
         System.out.println("2. Замените в строке все вхождения 'word' на 'letter'.");
         System.out.println("-------------------------------------------------------------");
 
+        String text = "word abcdefword abc word abwor a word worl  pd word.   word";
+        String wordGiven = "word";
+        String wordReplace = "letter";
 
+        System.out.println("Дан текст:");
+        System.out.println(text);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("Заменяем все слова " + wordGiven + " в тексте на " + wordReplace + ":");
+        String changeText = replaceWordAnoterWordInText(text, wordGiven, wordReplace);
+        System.out.println(changeText);
         System.out.println("=============================================================\n");
     }
 
+    private static void task03() {
+        System.out.println("3. В строке найти количество цифр.");
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("=============================================================\n");
+    }
 
 }
