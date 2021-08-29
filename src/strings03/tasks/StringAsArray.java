@@ -1,16 +1,15 @@
 package strings03.tasks;
 
-import static supporting.MyMethodsString.convertCamelCaseInSnakeCase;
-import static supporting.MyMethodsString.replaceWordAnoterWordInText;
+import static supporting.MyMethodsString.*;
 
 public class StringAsArray {
     public static void Tasks() {
         System.out.println("\t=== Работа со строкой как с массивом символ ===\n");
-        task01();
-        task02();
-        task03();
-//        task04();
-//        task05();
+        //task01();
+        //task02();
+        //task03();
+        task04();
+        task05();
 //        task06();
     }
 
@@ -64,7 +63,59 @@ public class StringAsArray {
         System.out.println("3. В строке найти количество цифр.");
         System.out.println("-------------------------------------------------------------");
 
+        String text = "12 abc5efor6 123 wor77d 8ab5wo3r 0 wor1  pd word.9  1234";
+
+        System.out.println("Дан текст:");
+        System.out.println(text);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int amountDigit = 0;
+
+        char[] textArray = text.toCharArray();
+
+        for (int i = 0; i < textArray.length; i++) {
+            if (isDigitInText(textArray[i]) == true) {
+                amountDigit++;
+            }
+        }
+
+        System.out.println("Количество цифр в строке = " + amountDigit);
         System.out.println("=============================================================\n");
     }
+
+    private static void task04() {
+        System.out.println("4. В строке найти количество чисел.");
+        System.out.println("-------------------------------------------------------------");
+
+        String text = "1 22 abc5efor6 7g 123 wor77d 8ab5wo3r 0 wor1  pd word.9  1234 14";
+
+        System.out.println("Дан текст:");
+        System.out.println(text);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int amountRealNumber = amountRealNumberInText(text);
+
+        System.out.println("Количество чисел в строке = " + amountRealNumber);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task05() {
+        System.out.println("5. Удалить в строке все лишние пробелы, то есть серии подряд\n" +
+                "идущих пробелов заменить на одиночные пробелы.\n" +
+                "Крайние пробелы в строке удалить.");
+        System.out.println("-------------------------------------------------------------");
+
+        String text = "   1  22 abc5r6 7g 13   wor77d  8ab53r 0   wor1  pd word.9  1  ";
+
+        System.out.println("Дан текст:");
+        System.out.println(text);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("Удаляем все дублирующийся пробелы и все крайнее.");
+
+
+        System.out.println("=============================================================\n");
+    }
+
 
 }

@@ -51,7 +51,7 @@ public class MyMethodsString {
 
             char[] camelCaseSymbols = camelCase[i].toCharArray();
 
-            if(wordLength < camelCaseSymbols.length)
+            if (wordLength < camelCaseSymbols.length)
                 wordLength = camelCaseSymbols.length;
 
             for (int j = 0; j < camelCaseSymbols.length; j++) {
@@ -60,7 +60,7 @@ public class MyMethodsString {
                 }
             }
 
-            if(maxCoutnUp < countUpCharacter)
+            if (maxCoutnUp < countUpCharacter)
                 maxCoutnUp = countUpCharacter;
 
         }
@@ -82,7 +82,7 @@ public class MyMethodsString {
 
             for (int j = 0; j < snakeCaseWordsSymbols[i].length; j++) {
 
-                if(snakeCaseWordsSymbols[i][j] == '\0')
+                if (snakeCaseWordsSymbols[i][j] == '\0')
                     break;
 
                 result[i] += snakeCaseWordsSymbols[i][j];
@@ -92,8 +92,7 @@ public class MyMethodsString {
         return result;
     }
 
-    public static int countWordInText(String text, String wordGiven)
-    {
+    public static int countWordInText(String text, String wordGiven) {
         char[] textArray = text.toUpperCase().toCharArray();
         char[] wordGivenArr = wordGiven.toUpperCase().toCharArray();
 
@@ -175,8 +174,7 @@ public class MyMethodsString {
     }
 
 
-    public static String replaceWordAnoterWordInText(String text, String wordGiven, String wordReplace)
-    {
+    public static String replaceWordAnoterWordInText(String text, String wordGiven, String wordReplace) {
         int numberWordsToReplace = countWordInText(text, wordGiven);
 
         int lengthText = text.length();
@@ -331,7 +329,96 @@ public class MyMethodsString {
         return resultStr;
     }
 
+    public static boolean isDigitInText(char simdol) {
 
+        if (simdol == '0' ||
+                simdol == '1' ||
+                simdol == '2' ||
+                simdol == '3' ||
+                simdol == '4' ||
+                simdol == '5' ||
+                simdol == '6' ||
+                simdol == '7' ||
+                simdol == '8' ||
+                simdol == '9') {
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public static int amountRealNumberInText(String text) {
+
+        char[] textArray = text.toCharArray();
+        char[] tempArrayForNumber = new char[textArray.length];
+
+        int amountRealNumber = 0;
+
+        // Переписываем строку для использования (q77d сжимаем)
+        int k = 0;
+        for (int i = 0; i < textArray.length - 1; i++) {
+            if (i == 0) {
+                tempArrayForNumber[k] = ' ';
+                k++;
+            }
+
+            if (isDigitInText(textArray[i]) == true) {
+                if (i != 0) {
+                    tempArrayForNumber[k] = textArray[i - 1];
+                    k++;
+                }
+
+                for (int j = i; j < textArray.length; j++) {
+                    if (isDigitInText(textArray[j]) == false) {
+                        tempArrayForNumber[k] = textArray[j];
+                        k++;
+                        i = j;
+                        break;
+                    }
+
+                    tempArrayForNumber[k] = textArray[j];
+                    k++;
+                }
+            }
+        }
+
+        // Определям количесво реальных чисел из сжатой строки массива символов
+        int count = 0;
+        for (int i = 0; i < tempArrayForNumber.length; i++) {
+            if (isDigitInText(tempArrayForNumber[i]) == true) {
+
+                for (int j = i; j < tempArrayForNumber.length; j++) {
+                    if (tempArrayForNumber[j - 1] == ' ') {
+
+                        while (isDigitInText(tempArrayForNumber[j]) == true) {
+                            if (isDigitInText(tempArrayForNumber[j + 1]) == true ||
+                                    tempArrayForNumber[j + 1] == ' ' ||
+                                    tempArrayForNumber[j + 1] == '\0') {
+
+                                count++;
+                            }
+
+                            j++;
+                        }
+
+                        if (count > 0)
+                            amountRealNumber++;
+
+                        count = 0;
+
+                    }
+
+                    if (isDigitInText(tempArrayForNumber[j]) == false) {
+                        i = j;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return amountRealNumber;
+    }
 
 
 }
