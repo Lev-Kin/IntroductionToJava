@@ -1,7 +1,7 @@
 package strings03;
 
-
 import strings03.tasks.StringAsArray;
+import strings03.tasks.StringAsObject;
 
 public class Strings {
     public static void Solution() {
@@ -9,7 +9,8 @@ public class Strings {
         System.out.println("\t===|| 03 Strings and basics of text processing ||===");
         System.out.println("-------------------------------------------------------------");
         System.out.println();
-        StringAsArray.Tasks();
+        //StringAsArray.Tasks();
+        StringAsObject.Tasks();
 
     }
 }

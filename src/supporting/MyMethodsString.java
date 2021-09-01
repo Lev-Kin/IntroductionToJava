@@ -420,5 +420,47 @@ public class MyMethodsString {
         return amountRealNumber;
     }
 
+    public static String spaceCutDuplicateAndCutAllInBack(String text) {
+
+        char[] textArray = text.toCharArray();
+        char[] tempArray = new char[textArray.length];
+
+        // Cмещаем уберая дубликаты пробелов
+        int space = 0;
+        int j = 0;
+        for (int i = 0; i < textArray.length; i++) {
+            if (textArray[i] == ' ') {
+                while (space != 1) {
+                    tempArray[j] = ' ';
+                    j++;
+                    space = 1;
+                }
+            } else {
+                tempArray[j] = textArray[i];
+                j++;
+                space = 0;
+            }
+        }
+        tempArray[j] = '\0';
+
+        // Определяем количество пробелов и \0 конца строки
+        int countEndSpace = 0;
+        for (int i = tempArray.length - 1; i > 0; i--) {
+            if (tempArray[i] == '\0' || tempArray[i] == ' ') {
+                countEndSpace++;
+            } else {
+                break;
+            }
+        }
+
+        char[] editedTempArray = new char[tempArray.length - countEndSpace];
+        for (int i = 0; i < editedTempArray.length; i++) {
+            editedTempArray[i] = tempArray[i];
+        }
+
+        String editedStr = new String(editedTempArray);
+
+        return editedStr;
+    }
 
 }

@@ -5,12 +5,11 @@ import static supporting.MyMethodsString.*;
 public class StringAsArray {
     public static void Tasks() {
         System.out.println("\t=== Работа со строкой как с массивом символ ===\n");
-        //task01();
-        //task02();
-        //task03();
+        task01();
+        task02();
+        task03();
         task04();
         task05();
-//        task06();
     }
 
     private static void task01() {
@@ -105,17 +104,17 @@ public class StringAsArray {
                 "Крайние пробелы в строке удалить.");
         System.out.println("-------------------------------------------------------------");
 
-        String text = "   1  22 abc5r6 7g 13   wor77d  8ab53r 0   wor1  pd word.9  1  ";
+        String text = " 1  22 abc5r6 7g 13   wor77d  8ab53r 0   wor1  pd word.9  1   ";
 
         System.out.println("Дан текст:");
         System.out.println(text);
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
 
-        System.out.println("Удаляем все дублирующийся пробелы и все крайнее.");
+        System.out.println("Удаляем все дублирующийся пробелы и все крайнее:");
 
+        String editedText = spaceCutDuplicateAndCutAllInBack(text);
 
+        System.out.println(editedText);
         System.out.println("=============================================================\n");
     }
-
-
 }
