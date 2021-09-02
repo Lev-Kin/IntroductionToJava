@@ -7,10 +7,10 @@ public class StringAsObject {
                 "\t\t    типа String или StringBuilder ===\n");
         //task01();
         //task02();
-        task03();
+        //task03();
         //task04();
-        //task05();
-        //task06();
+        task05();
+        task06();
         //task07();
         //task08();
         //task09();
@@ -52,7 +52,7 @@ public class StringAsObject {
         System.out.println("2. В строке вставить после каждого символа 'a' символ 'b'.");
         System.out.println("-------------------------------------------------------------");
 
-        String text = " 1  22 abc5r6 7a 13   waa77d  8ab53r 0   aoa1  pd word.9  1  a";
+        String text = " 1  22 abc5r6 7a 13   waa77d  8ab53r 0   aoa1  pd word.9  1 a";
 
         System.out.println("Дан текст:");
         System.out.println(text);
@@ -76,11 +76,85 @@ public class StringAsObject {
         System.out.println("3. Проверить, является ли заданное слово палиндромом.");
         System.out.println("-------------------------------------------------------------");
 
+        String[] word = {"Qddf", "QfFq", "Ана", "Лето"};
 
+        for (int i = 0; i < word.length; i++) {
+            System.out.print("Слово: " + word[i]);
 
-        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+            String reverseWord = new StringBuilder(word[i]).reverse().toString();
+
+            if (reverseWord.equalsIgnoreCase(word[i]))
+                System.out.print("\t - является палиндромом.\n");
+            else
+                System.out.print("\t - не является палиндромом.\n");
+        }
 
         System.out.println("=============================================================\n");
     }
+
+    private static void task04() {
+        System.out.println("4. C помощью функции копирования и операции конкатенации\n" +
+                "составить из частей слова “информатика” слово “торт”.");
+        System.out.println("-------------------------------------------------------------");
+
+        String wordGiven = "информатика";
+        String wordNeded = "торт";
+        String resultWord = "";
+
+        for (int i = 0; i < wordNeded.length(); i++) {
+            for (int j = 0; j < wordGiven.length(); j++) {
+                if (wordNeded.charAt(i) == wordGiven.charAt(j)) {
+                    resultWord += String.copyValueOf(wordGiven.toCharArray(), j, 1);
+                }
+            }
+        }
+
+        System.out.println(resultWord);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task05() {
+        System.out.println("5. Подсчитать, сколько раз среди символов заданной строки\n" +
+                "встречается буква “а”.");
+        System.out.println("-------------------------------------------------------------");
+
+        String text = " 1  22 abc5r6 7a 13   waa77d  8ab53r 0   aoa1  pd word.9  1 a";
+
+        System.out.println("Дана строка:");
+        System.out.println(text);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int countA = 0;
+        for (int i = 0; i < text.length(); i++)
+            if (text.charAt(i) == 'a')
+                countA++;
+
+        System.out.println("Количество встречающейся буквы \"a\" = " + countA);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task06() {
+        System.out.println("6. Из заданной строки получить новую,\n" +
+                "повторив каждый символ дважды.");
+        System.out.println("-------------------------------------------------------------");
+
+        String text = "1  22 abc5r6 waa77d  8ab53r 0 pd word.9 a";
+
+        System.out.println("Дана строка:");
+        System.out.println(text);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        StringBuilder strBuilder = new StringBuilder(text);
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < strBuilder.length(); i++) {
+            result.append(strBuilder.charAt(i));
+            result.append(strBuilder.charAt(i));
+        }
+
+        System.out.println(result);
+        System.out.println("=============================================================\n");
+    }
+
 
 }
