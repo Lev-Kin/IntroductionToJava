@@ -1,6 +1,10 @@
 package strings03.tasks;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class StringAsObject {
     public static void Tasks() {
         System.out.println("\t\t=== Работа со строкой как с объектом\n" +
@@ -9,12 +13,12 @@ public class StringAsObject {
         //task02();
         //task03();
         //task04();
-        task05();
-        task06();
+        //task05();
+        //task06();
         //task07();
         //task08();
         //task09();
-        //task10();
+        task10();
     }
 
     private static void task01() {
@@ -156,5 +160,157 @@ public class StringAsObject {
         System.out.println("=============================================================\n");
     }
 
+    private static void task07() {
+        System.out.println("7. Вводится строка. Требуется удалить из нее повторяющиеся\n" +
+                "символы и все пробелы. Например, если было введено\n" +
+                "\"abc cde def\", то должно быть выведено \"abcdef\".");
+        System.out.println("-------------------------------------------------------------");
 
+//        String str = "abc cde def";
+//
+//        System.out.println("Дана строка:");
+//        System.out.println(str);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String str = null;
+
+        System.out.print("Введите строку:\n[str] --> ");
+        try {
+            str = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        StringBuilder strBuilder = new StringBuilder(str);
+
+        for (int i = 0; i < strBuilder.length(); i++) {
+
+            char uniqueChar = strBuilder.charAt(i);
+
+            // Удаляем пробелы
+            if (uniqueChar == ' ') {
+                strBuilder.deleteCharAt(i);
+                i--;
+                continue;
+            }
+
+            for (int j = i + 1; j < strBuilder.length(); j++) {
+                if (strBuilder.charAt(j) == uniqueChar) {
+                    strBuilder.deleteCharAt(j);
+                }
+            }
+        }
+
+        String.valueOf(strBuilder);
+        System.out.println(strBuilder);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task08() {
+        System.out.println("8. Вводится строка слов, разделенных пробелами.\n" +
+                "Найти самое длинное слово и вывести его на экран.\n" +
+                "Случай, когда самых длинных слов может быть несколько,\n" +
+                "не обрабатывать.");
+        System.out.println("-------------------------------------------------------------");
+
+//        String str = " 1  22 abc5r6 7a 13   waa77d  8ab53r 0   aoa1  pd word.9  1 a";
+//
+//        System.out.println("Дана строка:");
+//        System.out.println(str);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String str = null;
+
+        System.out.print("Введите строку слов разделеными пробелами:\n[str] --> ");
+        try {
+            str = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        String longestWord = "";
+        int maxLenght = 0;
+
+        String[] words = str.split(" ");
+
+        for (int i = 1; i < words.length; i++) {
+            if (words[i].length() > maxLenght) {
+                maxLenght = words[i].length();
+                longestWord = words[i];
+            }
+        }
+
+        System.out.println("Самое длиное слово в строке разделенае пробелами:");
+        System.out.println(longestWord);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task09() {
+        System.out.println("9. Посчитать количество строчных (маленьких) и прописных\n" +
+                "(больших) букв в введенной строке.\n" +
+                "Учитывать только английские буквы.");
+        System.out.println("-------------------------------------------------------------");
+
+//        String str = " 1  22 Abc5r6 7a 13   waA77d  8ab53R 0   aoa1  Pd wOrd.9  1 a";
+//
+//        System.out.println("Дана строка:");
+//        System.out.println(str);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String str = null;
+
+        System.out.print("Введите строку из букв только латинского алфавита:\n[str] --> ");
+        try {
+            str = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int lowerCaseAmount = 0;
+        int upperCaseAmount = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') {
+                upperCaseAmount++;
+            }
+
+            if (str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+                lowerCaseAmount++;
+            }
+        }
+
+        System.out.println("Количество больших   букв в строке = " + upperCaseAmount);
+        System.out.println("Количество маленьких букв в строек = " + lowerCaseAmount);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task10() {
+        System.out.println("10. Строка X состоит из нескольких предложений,\n" +
+                "каждое из которых кончается точкой,\n" +
+                "восклицательным или вопросительным знаком.\n" +
+                "Определить количество предложений в строке X.");
+        System.out.println("-------------------------------------------------------------");
+
+        String strX = "Быть или не быть, вот в чём вопрос.\n" +
+                "To be, or not to be, that is the question.\n" +
+                "Ну и умный же ты! Какой сегодя день недели?\n" +
+                "How beautiful you look! Do you like studying? − Yes, I do.";
+
+        System.out.println("Дана строка X:");
+        System.out.println(strX);
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        int coutOffer = 0;
+
+        for (int i = 0; i < strX.length(); i++) {
+            if (strX.charAt(i) == '.' || strX.charAt(i) == '!' || strX.charAt(i) == '?')
+                coutOffer++;
+        }
+
+        System.out.println("Количество предложений в стороке X = " + coutOffer);
+        System.out.println("=============================================================\n");
+    }
 }
