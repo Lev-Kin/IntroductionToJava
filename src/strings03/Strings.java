@@ -1,5 +1,6 @@
 package strings03;
 
+import strings03.tasks.RegularExpression;
 import strings03.tasks.StringAsArray;
 import strings03.tasks.StringAsObject;
 
@@ -10,7 +11,7 @@ public class Strings {
         System.out.println("-------------------------------------------------------------");
         System.out.println();
         //StringAsArray.Tasks();
-        StringAsObject.Tasks();
-
+        //StringAsObject.Tasks();
+        RegularExpression.Tasks();
     }
 }

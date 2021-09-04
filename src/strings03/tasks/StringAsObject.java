@@ -9,15 +9,15 @@ public class StringAsObject {
     public static void Tasks() {
         System.out.println("\t\t=== Работа со строкой как с объектом\n" +
                 "\t\t    типа String или StringBuilder ===\n");
-        //task01();
-        //task02();
-        //task03();
-        //task04();
-        //task05();
-        //task06();
-        //task07();
-        //task08();
-        //task09();
+        task01();
+        task02();
+        task03();
+        task04();
+        task05();
+        task06();
+        task07();
+        task08();
+        task09();
         task10();
     }
 
@@ -303,14 +303,14 @@ public class StringAsObject {
         System.out.println(strX);
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
 
-        int coutOffer = 0;
+        int coutSentence = 0;
 
         for (int i = 0; i < strX.length(); i++) {
             if (strX.charAt(i) == '.' || strX.charAt(i) == '!' || strX.charAt(i) == '?')
-                coutOffer++;
+                coutSentence++;
         }
 
-        System.out.println("Количество предложений в стороке X = " + coutOffer);
+        System.out.println("Количество предложений в стороке X = " + coutSentence);
         System.out.println("=============================================================\n");
     }
 }
