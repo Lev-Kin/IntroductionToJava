@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static supporting.MyMethodsRegularExpression.*;
 
@@ -33,13 +35,12 @@ public class RegularExpression {
                 "VII\tParagraph. Final Fantasy Remake.";
 
         Scanner scanner = new Scanner(System.in);
+
         int menu;
         int option;
 
-        char enter;  // для подтверждения
+        char enter;
         char repeat = '\0';
-
-        boolean find; // для 7 пункта
 
         boolean work = false;
         boolean goBack = true;
@@ -286,7 +287,58 @@ public class RegularExpression {
                 "Пользоваться готовыми парсерами XML для решения задачи нельзя");
         System.out.println("-------------------------------------------------------------");
 
+        String xml = "<notes>\n" +
+                " <note id = \"1\">\n" +
+                " <to>Вася</to>\n" +
+                " <from>Света</from>\n" +
+                " <heading>Напоминание</heading>\n" +
+                " <body>Позвони мне завтра!</body>\n" +
+                " </note>\n" +
+                " <note id = \"2\">\n" +
+                " <to>Петя</to>\n" +
+                " <from>Маша</from>\n" +
+                " <heading>Важное напоминание</heading>\n" +
+                " <body/>\n" +
+                " </note>\n" +
+                "</notes>";
 
+        StringBuilder strBuilder = new StringBuilder();
+
+        Pattern tegOpen = Pattern.compile("<\\w.+?>");
+        Pattern tegClose = Pattern.compile("</\\w+>");
+        Pattern tegContent = Pattern.compile(">.+?<");
+        Pattern tegEmpty = Pattern.compile("<\\w.+?/>");
+
+        String[] lines = xml.split("\n\\s*");
+
+        for (String line : lines) {
+
+            Matcher matcherOpen = tegOpen.matcher(line);
+            Matcher matcherClose = tegClose.matcher(line);
+            Matcher matcherContent = tegContent.matcher(line);
+            Matcher matcherEmpty = tegEmpty.matcher(line);
+
+            if (matcherEmpty.find() == true) {
+                strBuilder.append("\nTег без тела\t:\t");
+                strBuilder.append(matcherEmpty.group());
+            }
+            else if (matcherOpen.find() == true) {
+                strBuilder.append("\nОткрывающий тег\t:\t");
+                strBuilder.append(matcherOpen.group());
+            }
+
+            if (matcherContent.find() == true) {
+                strBuilder.append("\nСодержимое тега\t:\t");
+                strBuilder.append(matcherContent.group().substring(1));
+                strBuilder.append("\b");
+            }
+
+            if (matcherClose.find() == true) {
+                strBuilder.append("\nЗакрывающий тег\t:\t");
+                strBuilder.append(matcherClose.group());
+            }
+        }
+        System.out.println(strBuilder);
         System.out.println("=============================================================\n");
     }
 }
