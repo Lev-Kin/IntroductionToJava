@@ -10,8 +10,8 @@ public class Strings {
         System.out.println("\t===|| 03 Strings and basics of text processing ||===");
         System.out.println("-------------------------------------------------------------");
         System.out.println();
-        //StringAsArray.Tasks();
-        //StringAsObject.Tasks();
+        StringAsArray.Tasks();
+        StringAsObject.Tasks();
         RegularExpression.Tasks();
     }
 }
