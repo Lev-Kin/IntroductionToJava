@@ -1,5 +1,6 @@
 package сlasses04.tasks;
 
+import сlasses04.tasks.counter.CounterInteger;
 import сlasses04.tasks.student.Student;
 import сlasses04.tasks.test01.Test1;
 import сlasses04.tasks.test02.Test2;
@@ -17,8 +18,8 @@ public class SimpleObject {
         //task02();
         //task03();
         //task04();
-        task05();
-//        task06();
+        //task05();
+        task06();
 //        task07();
 //        task08();
 //        task09();
@@ -352,8 +353,129 @@ public class SimpleObject {
         System.out.println("=============================================================\n");
     }
 
-    private static void task05(){
+    private static void task05() {
+        System.out.println("5. Опишите класс, реализующий десятичный счетчик, который\n" +
+                "может увеличивать или уменьшать свое значение на единицу в\n" +
+                "заданном диапазоне. Предусмотрите инициализацию счетчика\n" +
+                "значениями по умолчанию и произвольными значениями.\n" +
+                "Счетчик имеет методы увеличения и уменьшения состояния,\n" +
+                "и метод позволяющее получить его текущее состояние.\n" +
+                "Написать код, демонстрирующий все возможности класса.");
+        System.out.println("-------------------------------------------------------------");
+        CounterInteger counterDefault = new CounterInteger();
+        System.out.printf("I. Счетчик по умолчанию в заданых приделах от %d до %d:\n",
+                counterDefault.getMinLimit(), counterDefault.getMaxLimit());
+        System.out.println("1) Счетчик работает на увеличение:");
+        System.out.println("Начальное значение счетчика = " + counterDefault.getCurrentValue());
 
-        
+        while (counterDefault.increase() == true) {
+            counterDefault.increase();
+
+            System.out.print(counterDefault.getCurrentValue());
+            System.out.print(" - работает счетчик.\r");
+
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        System.out.print("\r");
+
+        if (counterDefault.increase() == false) {
+            System.out.printf("Счетчик дошел до верхнего предела %d и равен %d\n",
+                    counterDefault.getMaxLimit(), counterDefault.getCurrentValue());
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("2) Счетчик работает на уменьшение:");
+        System.out.println("Начальное значение счетчика = " + counterDefault.getCurrentValue());
+
+        while (counterDefault.decrease() == true) {
+            counterDefault.decrease();
+
+            System.out.print(counterDefault.getCurrentValue());
+            System.out.print(" - работает счетчик.\r");
+
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        System.out.print("\r");
+
+        if (counterDefault.decrease() == false) {
+            System.out.printf("Счетчик дошел до предела %d и равен %d\n",
+                    counterDefault.getMinLimit(), counterDefault.getCurrentValue());
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        CounterInteger counterParameter = new CounterInteger((int) (Math.random() * 200 + 1) - 100);
+        System.out.printf("II. Счетчик с заданым произвольным значением\n" +
+                "в приделах от %d до %d:\n", counterParameter.getMinLimit(), counterParameter.getMaxLimit());
+        System.out.println("1) Счетчик работает на увеличение:");
+        System.out.println("Начальное произвольное значение счетчика = " + counterParameter.getCurrentValue());
+
+        while (counterParameter.increase() == true) {
+            counterParameter.increase();
+
+            System.out.print(counterParameter.getCurrentValue());
+            System.out.print(" - работает счетчик.\r");
+
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        System.out.print("\r");
+
+        if (counterParameter.increase() == false) {
+            System.out.printf("Счетчик дошел до верхнего предела %d и равен %d\n",
+                    counterParameter.getMaxLimit(), counterParameter.getCurrentValue());
+        }
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("2) Счетчик работает на уменьшение:");
+        System.out.println("Передаем новое произольное значение счетчика.");
+        counterParameter.setCurrentValue((int) (Math.random() * 200 + 1) - 100);
+        System.out.println("Начальное произвольное значение счетчика = " + counterParameter.getCurrentValue());
+
+        while (counterParameter.decrease() == true) {
+            counterParameter.decrease();
+
+            System.out.print(counterParameter.getCurrentValue());
+            System.out.print(" - работает счетчик.\r");
+
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        System.out.print("\r");
+
+        if (counterParameter.decrease() == false) {
+            System.out.printf("Счетчик дошел до нижнего предела %d и равен %d\n",
+                    counterParameter.getMinLimit(), counterParameter.getCurrentValue());
+        }
+        System.out.println("=============================================================\n");
     }
+
+    private static void task06() {
+        System.out.println("6. Составьте описание класса для представления времени.\n" +
+                "Предусмотрте возможности установки времени и изменения его\n" +
+                "отдельных полей (час, минута, секунда) с проверкой\n" +
+                "допустимости вводимых значений. В случае недопустимых \n" +
+                "значений полей полеустанавливается в значение 0. Создать\n" +
+                "методы изменения времени на заданное количество\n" +
+                "часов, минут и секунд.");
+        System.out.println("-------------------------------------------------------------");
+
+
+        System.out.println("=============================================================\n");
+    }
+
+
 }
