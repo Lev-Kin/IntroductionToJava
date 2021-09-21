@@ -4,6 +4,7 @@ import сlasses04.tasks.counter.CounterInteger;
 import сlasses04.tasks.student.Student;
 import сlasses04.tasks.test01.Test1;
 import сlasses04.tasks.test02.Test2;
+import сlasses04.tasks.time.Time;
 import сlasses04.tasks.train.Train;
 import сlasses04.tasks.train.TrainProcessing;
 
@@ -20,7 +21,7 @@ public class SimpleObject {
         //task04();
         //task05();
         task06();
-//        task07();
+        task07();
 //        task08();
 //        task09();
 //        task10();
@@ -467,15 +468,64 @@ public class SimpleObject {
         System.out.println("6. Составьте описание класса для представления времени.\n" +
                 "Предусмотрте возможности установки времени и изменения его\n" +
                 "отдельных полей (час, минута, секунда) с проверкой\n" +
-                "допустимости вводимых значений. В случае недопустимых \n" +
-                "значений полей полеустанавливается в значение 0. Создать\n" +
+                "допустимости вводимых значений. В случае недопустимых\n" +
+                "значений полей поле устанавливается в значение 0. Создать\n" +
                 "методы изменения времени на заданное количество\n" +
                 "часов, минут и секунд.");
         System.out.println("-------------------------------------------------------------");
-
-
+        Time time = new Time(01, 15, 42);
+        System.out.println("\t\t\t\t --- I ---");
+        System.out.println("Начально установленое время: " + time.getTime());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Установливаем часы = 72");
+        time.setHour(72);
+        System.out.println("Полученое время: " + time.getTime());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Установливаем минуты = -60");
+        time.setMinute(-60);
+        System.out.println("Полученое время: " + time.getTime());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Установливаем секунды = 100");
+        time.setSecond(100);
+        System.out.println("Полученое время: " + time.getTime());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Установливаем часы = 15");
+        System.out.println("Установливаем минуты = 11");
+        System.out.println("Установливаем секунды = 51");
+        time.setHour(15);
+        time.setMinute(11);
+        time.setSecond(51);
+        System.out.println("Полученое время: " + time.getTime());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("\t\t\t\t --- II ---");
+        time.setHour(0);
+        time.setMinute(0);
+        time.setSecond(0);
+        System.out.println("Начальное время: " + time.getTime());
+        System.out.println("Изменяем временя на 7600 секунд");
+        time.changeSecond(7600);
+        System.out.println("Получаем время: " + time.getTime());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Изменяем временя на 74 минуты");
+        time.changeMinute(74);
+        System.out.println("Получаем время: " + time.getTime());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Изменяем временя на 2 часа");
+        time.changeHour(2);
+        System.out.println("Получаем время: " + time.getTime());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Изменяем временя на -17600 секунд");
+        time.changeSecond(-17600);
+        System.out.println("Получаем время: " + time.getTime());
         System.out.println("=============================================================\n");
     }
 
+    private static void task07() {
+        System.out.println("7. Описать класс, представляющий треугольник. Предусмотреть\n" +
+                "методы для создания объектов, вычисления площади,\n" +
+                "периметра и точки пересечения медиан.");
+        System.out.println("-------------------------------------------------------------");
 
+        System.out.println("=============================================================\n");
+    }
 }
