@@ -12,7 +12,7 @@ import static supporting.MyMethodsRegularExpression.*;
 public class RegularExpression {
     public static void Tasks() {
         System.out.println(" === Работа с регулярными выражениями (Pattern, Matcher) ===\n");
-        //task01();
+        task01();
         task02();
     }
 
