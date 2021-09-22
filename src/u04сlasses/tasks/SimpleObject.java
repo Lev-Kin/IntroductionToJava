@@ -1,6 +1,8 @@
 package u04сlasses.tasks;
 
 import u04сlasses.tasks.counter.CounterInteger;
+import u04сlasses.tasks.customer.Customer;
+import u04сlasses.tasks.customer.CustomerProcessing;
 import u04сlasses.tasks.student.Student;
 import u04сlasses.tasks.test01.Test1;
 import u04сlasses.tasks.test02.Test2;
@@ -27,8 +29,8 @@ public class SimpleObject {
         //task05();
         //task06();
         //task07();
-        task08();
-//        task09();
+        //task08();
+        task09();
 //        task10();
     }
 
@@ -532,6 +534,7 @@ public class SimpleObject {
         System.out.println("-------------------------------------------------------------");
 
         Random random = new Random();
+
         Point a = new Point(random.nextInt(20) - 10, random.nextInt(20) - 10);
         Point b = new Point(random.nextInt(20) - 10, random.nextInt(20) - 10);
         Point c = new Point(random.nextInt(20) - 10, random.nextInt(20) - 10);
@@ -573,7 +576,81 @@ public class SimpleObject {
                 "карточки находится в заданном интервале.");
         System.out.println("-------------------------------------------------------------");
 
+        long leftLimit = 1000000000000000L;
+        long rightLimit = 9999999999999999L;
 
+        Random random = new Random();
+//        int lLim = 10;
+//        int rLim = 1000000000;
+        Customer[] customers = new Customer[]{
+                new Customer(random.nextInt(Integer.MAX_VALUE - 1) + 1,
+                        "Иванов", "Алексей", "Александрович",
+                        "Гомель",
+                        leftLimit + (long) (Math.random() * (rightLimit - leftLimit)),
+                        random.nextInt(Integer.MAX_VALUE - 1) + 1),
+                new Customer(random.nextInt(Integer.MAX_VALUE - 1) + 1,
+                        "Смирнов", "Владимер", "Геннадьевич",
+                        "Гомель",
+                        leftLimit + (long) (Math.random() * (rightLimit - leftLimit)),
+                        random.nextInt(Integer.MAX_VALUE - 1) + 1),
+                new Customer(random.nextInt(Integer.MAX_VALUE - 1) + 1,
+                        "Петров", "Егор", "Дмитриевич",
+                        "Минск",
+                        leftLimit + (long) (Math.random() * (rightLimit - leftLimit)),
+                        random.nextInt(Integer.MAX_VALUE - 1) + 1),
+                new Customer(random.nextInt(Integer.MAX_VALUE - 1) + 1,
+                        "Волкова", "Елена", "Александровна",
+                        "Гродно",
+                        leftLimit + (long) (Math.random() * (rightLimit - leftLimit)),
+                        random.nextInt(Integer.MAX_VALUE - 1) + 1),
+                new Customer(random.nextInt(Integer.MAX_VALUE - 1) + 1,
+                        "Лебедева", "Наталья", "Игоревна",
+                        "Витебск",
+                        leftLimit + (long) (Math.random() * (rightLimit - leftLimit)),
+                        random.nextInt(Integer.MAX_VALUE - 1) + 1)
+        };
+
+        CustomerProcessing customerProcessing = new CustomerProcessing(customers);
+
+        System.out.println("Имеющийся покупатели для обработки согласно задания:");
+        customerProcessing.print(customers);
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("a) Выводим покупателей в алфавидном порядке:");
+        customerProcessing.sortCustomersAlphabetic(customers);
+        customerProcessing.print(customers);
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("б) Выводим покупателей в задоном интервале катры:");
+
+        long start = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
+        long end = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
+        long temp = 0L;
+
+        if (start > end) {
+            temp = start;
+            start = end;
+            end = temp;
+        }
+
+        System.out.println("Интервал каты (" + start + "  -  " + end + ")");
+        customerProcessing.printByCreditCardNumber(start, end);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task09() {
+        System.out.println("9. Создать класс Book, спецификация которого приведена ниже.\n" +
+                "Определить конструкторы, set- и get- методы и метод toString().\n" +
+                "Создать второй класс, агрегирующий массив типа Book,\n" +
+                "с подходящими конструкторами и методами. Задать критерии\n" +
+                "выбора данных и вывести эти данные на консоль.\n\n" +
+                "Book: id, название, автор(ы), издательство, год издания,\n" +
+                "количество страниц, цена, тип переплета.\n" +
+                "Найти и вывести:\n" +
+                "a) список книг заданного автора;\n" +
+                "b) список книг, выпущенных заданным издательством;\n" +
+                "c) список книг, выпущенных после заданного года.");
+        System.out.println("-------------------------------------------------------------");
 
 
         System.out.println("=============================================================\n");
