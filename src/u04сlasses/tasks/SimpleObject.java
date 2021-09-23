@@ -1,5 +1,6 @@
 package u04сlasses.tasks;
 
+import u04сlasses.tasks.book.BookProcessing;
 import u04сlasses.tasks.counter.CounterInteger;
 import u04сlasses.tasks.customer.Customer;
 import u04сlasses.tasks.customer.CustomerProcessing;
@@ -13,6 +14,7 @@ import u04сlasses.tasks.triangle.Point;
 import u04сlasses.tasks.triangle.Triangle;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -31,7 +33,7 @@ public class SimpleObject {
         //task07();
         //task08();
         task09();
-//        task10();
+        task10();
     }
 
     private static void task01() {
@@ -652,10 +654,85 @@ public class SimpleObject {
                 "c) список книг, выпущенных после заданного года.");
         System.out.println("-------------------------------------------------------------");
 
+        BookProcessing bookProcessing = new BookProcessing(new ArrayList<>());
 
+        bookProcessing.addBook("Основы программирования на Java",
+                "Роберт Седжвик и Кевин Уэйн",
+                "Питер",
+                2018,
+                1072,
+                100.25f,
+                "Tвердая обложка");
 
+        bookProcessing.addBook("Java from EPAM",
+                "И. Н. Блинов и В. С. Романчик",
+                "Четыре четверти",
+                2020,
+                560,
+                67.50f,
+                "Мягкая обложка");
 
+        bookProcessing.addBook("Философия Java",
+                "Брюс Эккель",
+                "Питер",
+                2009,
+                640,
+                55.55f,
+                "Твердая обложка");
+
+        bookProcessing.addBook("Изучаем Java",
+                "Кэти Сьерра и Берт Бейтс",
+                "ЭКСМО",
+                2012,
+                720,
+                85.10f,
+                "Мягкая обложка");
+
+        bookProcessing.addBook("Java: руководство для начинающих",
+                "Герберт Шилдт",
+                "Диалектика",
+                2019,
+                816,
+                97.45f,
+                "Твердая обложка");
+
+        System.out.println("Имеющийся книги для обработки согласно задания:");
+        bookProcessing.print(bookProcessing.getBooksList());
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("a) Выводим список книг заданного автора:");
+        String searchAutor = "Брюс Эккель";
+        System.out.println("Заданый автор для поиска книг - " + searchAutor);
+        bookProcessing.print(bookProcessing.authorBooks(searchAutor));
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("b) Выводим список книг, выпущенных заданным издательством:");
+        String searchPublisher = "Питер";
+        System.out.println("Заданое издательство для поиска книг - " + searchPublisher);
+        bookProcessing.print(bookProcessing.publisherBooks(searchPublisher));
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("c) Выводим список книг, выпущенных после заданного года:");
+        int searchYear = 2018;
+        System.out.println("Заданый год для поиска книг - " + searchYear);
+        bookProcessing.print(bookProcessing.releasedAfter(searchYear));
         System.out.println("=============================================================\n");
     }
 
+    private static void task10() {
+        System.out.println("10. Создать класс Airline, спецификация которого приведена ниже.\n" +
+                "Определить конструкторы, set- и get- методы и метод toString().\n" +
+                "Создать второй класс, агрегирующий массив типа Airline, с\n" +
+                "подходящими конструкторами и методами. Задать критерии\n" +
+                "выбора данных и вывести эти данные на консоль.\n\n" +
+                "Airline: пункт назначения, номер рейса, тип самолета,\n" +
+                "время вылета, дни недели.\n" +
+                "Найти и вывести:\n" +
+                "a) список рейсов для заданного пункта назначения;\n" +
+                "b) список рейсов для заданного дня недели;\n" +
+                "c) список рейсов для заданного дня недели, время вылета для\n" +
+                "   которых больше заданного.");
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("=============================================================\n");
+    }
 }

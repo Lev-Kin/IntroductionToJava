@@ -80,7 +80,7 @@ public class Customer {
     @Override
     public String toString() {
         return ".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   ." +
-                "\n---| Клиент ID " + id + "\t\t\t|---\n"+
+                "\n---| Клиент ID " + id + "\t\t\t|---\n" +
                 "Фамилия:\t" + surname + '\n' +
                 "Имя:\t\t" + name + '\n' +
                 "Отчество:\t" + patronymic + '\n' +
