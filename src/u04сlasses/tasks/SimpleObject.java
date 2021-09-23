@@ -20,7 +20,6 @@ import java.util.Scanner;
 
 import static u04сlasses.tasks.triangle.Triangle.createTriangle;
 
-
 public class SimpleObject {
     public static void Tasks() {
         System.out.println("\t\t=== Простейшие классы и объекты ===\n");
@@ -733,6 +732,10 @@ public class SimpleObject {
                 "c) список рейсов для заданного дня недели, время вылета для\n" +
                 "   которых больше заданного.");
         System.out.println("-------------------------------------------------------------");
+
+
+
+
         System.out.println("=============================================================\n");
     }
 }
