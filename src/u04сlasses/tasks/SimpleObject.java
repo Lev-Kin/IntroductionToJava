@@ -1,5 +1,7 @@
 package u04сlasses.tasks;
 
+import u04сlasses.tasks.airline.Airline;
+import u04сlasses.tasks.airline.AirlineProcessing;
 import u04сlasses.tasks.book.BookProcessing;
 import u04сlasses.tasks.counter.CounterInteger;
 import u04сlasses.tasks.customer.Customer;
@@ -14,7 +16,11 @@ import u04сlasses.tasks.triangle.Point;
 import u04сlasses.tasks.triangle.Triangle;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -31,8 +37,12 @@ public class SimpleObject {
         //task06();
         //task07();
         //task08();
-        task09();
-        task10();
+        //task09();
+        try {
+            task10();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void task01() {
@@ -718,7 +728,7 @@ public class SimpleObject {
         System.out.println("=============================================================\n");
     }
 
-    private static void task10() {
+    private static void task10() throws ParseException {
         System.out.println("10. Создать класс Airline, спецификация которого приведена ниже.\n" +
                 "Определить конструкторы, set- и get- методы и метод toString().\n" +
                 "Создать второй класс, агрегирующий массив типа Airline, с\n" +
@@ -733,8 +743,76 @@ public class SimpleObject {
                 "   которых больше заданного.");
         System.out.println("-------------------------------------------------------------");
 
+        AirlineProcessing airlineProcessing = new AirlineProcessing(new ArrayList<>());
 
+        airlineProcessing.addAirline("Moscow (ZIA)",
+                "B2 973",
+                "Boeing 737-300",
+                Airline.simpleDateFormat.parse("18:05"),
+                new DayOfWeek[]{DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY,
+                        DayOfWeek.THURSDAY, DayOfWeek.FRIDAY, DayOfWeek.SATURDAY,
+                        DayOfWeek.SUNDAY});
 
+        airlineProcessing.addAirline("Moscow (DME)",
+                "B2 993",
+                "Boeing 737-500",
+                Airline.simpleDateFormat.parse("19:45"),
+                new DayOfWeek[]{DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY,
+                        DayOfWeek.THURSDAY, DayOfWeek.FRIDAY, DayOfWeek.SATURDAY});
+
+        airlineProcessing.addAirline("Berlin (SXF)",
+                "B2 891",
+                "Embraer RJ-175",
+                Airline.simpleDateFormat.parse("12:15"),
+                new DayOfWeek[]{DayOfWeek.TUESDAY, DayOfWeek.THURSDAY,
+                        DayOfWeek.FRIDAY, DayOfWeek.SUNDAY});
+
+        airlineProcessing.addAirline("Moscow (ZIA)",
+                "B2 971", "Boeing 737-500",
+                Airline.simpleDateFormat.parse("8:15"),
+                new DayOfWeek[]{DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY,
+                        DayOfWeek.THURSDAY, DayOfWeek.FRIDAY, DayOfWeek.SATURDAY,
+                        DayOfWeek.SUNDAY});
+
+        airlineProcessing.addAirline("Brussels (CRL)",
+                "B2 817",
+                "Embraer 175",
+                Airline.simpleDateFormat.parse("9:35"),
+                new DayOfWeek[]{DayOfWeek.THURSDAY, DayOfWeek.SATURDAY});
+
+        airlineProcessing.addAirline("Brussels (CRL)",
+                "B2 817",
+                "Embraer 175",
+                Airline.simpleDateFormat.parse("8:40"),
+                new DayOfWeek[]{DayOfWeek.WEDNESDAY});
+
+        System.out.println("Имеющийся самолеты для обработки согласно задания:");
+        airlineProcessing.print(airlineProcessing.getAirlines());
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("a) Выводим список рейсов для заданного пункта назначения:");
+        String searchDestination = "Brussels (CRL)";
+        System.out.println("Заданый пункт назначения для поиска рейсов - " + searchDestination);
+        airlineProcessing.print(airlineProcessing.planeFlightByDestination(searchDestination));
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("b) Выводим список рейсов для заданного дня недели:");
+        String searchDay = "Wednesday";
+        System.out.println("Задан день недели для поиска рейсов - " + searchDay);
+        airlineProcessing.
+                print(airlineProcessing.
+                        planeFlightByDay(DayOfWeek.valueOf(searchDay.toUpperCase())));
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("c) Выводим список рейсов список рейсов для заданного дня недели,\n" +
+                "время вылета для которых больше заданного:");
+        String searchDayForTime = "Tuesday";
+        Date searchTime = Airline.simpleDateFormat.parse("12:00");
+        System.out.println("Задан день недели для поиска рейсов - " + searchDayForTime);
+        System.out.println("Задано время больше которого производится поиск рейсов - " +
+                DateFormat.getTimeInstance(3).format(searchTime));
+        airlineProcessing.print(airlineProcessing.
+                planeFlightByDayAndTime(DayOfWeek.valueOf(searchDayForTime.toUpperCase()), searchTime));
 
         System.out.println("=============================================================\n");
     }
