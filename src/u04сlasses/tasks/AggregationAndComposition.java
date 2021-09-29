@@ -3,6 +3,10 @@ package u04сlasses.tasks;
 import u04сlasses.tasks.car.Car;
 import u04сlasses.tasks.car.Engine;
 import u04сlasses.tasks.car.Wheel;
+import u04сlasses.tasks.state.City;
+import u04сlasses.tasks.state.District;
+import u04сlasses.tasks.state.Region;
+import u04сlasses.tasks.state.State;
 import u04сlasses.tasks.text.Sentence;
 import u04сlasses.tasks.text.Text;
 import u04сlasses.tasks.text.Word;
@@ -11,9 +15,9 @@ public class AggregationAndComposition {
     public static void Tasks() {
         System.out.println("\t\t=== Агрегация и композиция ===\n");
         //task01();
-        task02();
+        //task02();
         //task03();
-        //task04();
+        task04();
         //task05();
     }
 
@@ -102,6 +106,60 @@ public class AggregationAndComposition {
         toyotaAlphard.drive();
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
         System.out.println("Модель машины: " + toyotaAlphard.getNameCar());
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task03() {
+        System.out.println("3. Создать объект класса Государство, используя классы\n" +
+                "Область, Район, Город. Методы: вывести на консоль столицу,\n" +
+                "количество областей, площадь, областные центры.");
+        System.out.println("-------------------------------------------------------------");
+
+        City[] citys = new City[]{
+                new City("Гомель"),
+                new City("Брест"),
+        };
+
+        Region[] regions = new Region[]{
+                new Region("Бресткая область"),
+                new Region("Витебсткая область"),
+                new Region("Гомельская область"),
+                new Region("Гродненская область"),
+                new Region("Минская область"),
+                new Region("Магилевская область")
+        };
+
+        District[] districts = new District[]{
+                new District("Гомельский район"),
+                new District("Бресткий район")
+
+        };
+
+        State belarus = new State("Беларусь", "Минск", 207.600, regions, districts);
+
+        System.out.printf("\t\t=== Создан объект Государство - %s ===\n", belarus.getStateName());
+        System.out.print("Сталица: ");
+        belarus.printCapital();
+        System.out.print("Количество областей = ");
+        belarus.printNumOfRegions();
+        System.out.print("Площадь государства = ");
+        belarus.printSquare();
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Областные центры:");
+        belarus.printRegionsNames();
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task04() {
+        System.out.println("4. Счета. Клиент может иметь несколько счетов в банке.\n" +
+                "Учитывать возможность блокировки/разблокировки счета.\n" +
+                "Реализовать поиск и сортировку счетов.\n" +
+                "Вычисление общей суммы по счетам.\n" +
+                "Вычисление суммы по всем счетам, имеющим положительный\n" +
+                "и отрицательный балансы отдельно.");
+        System.out.println("-------------------------------------------------------------");
+
+
         System.out.println("=============================================================\n");
     }
 
