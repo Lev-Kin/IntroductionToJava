@@ -29,15 +29,15 @@ import static u04сlasses.tasks.triangle.Triangle.createTriangle;
 public class SimpleObject {
     public static void Tasks() {
         System.out.println("\t\t=== Простейшие классы и объекты ===\n");
-        //task01();
-        //task02();
-        //task03();
-        //task04();
-        //task05();
-        //task06();
-        //task07();
-        //task08();
-        //task09();
+        task01();
+        task02();
+        task03();
+        task04();
+        task05();
+        task06();
+        task07();
+        task08();
+        task09();
         try {
             task10();
         } catch (ParseException e) {
