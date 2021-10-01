@@ -1,5 +1,8 @@
 package u04сlasses.tasks;
 
+import u04сlasses.tasks.bank.Account;
+import u04сlasses.tasks.bank.Bank;
+import u04сlasses.tasks.bank.Client;
 import u04сlasses.tasks.car.Car;
 import u04сlasses.tasks.car.Engine;
 import u04сlasses.tasks.car.Wheel;
@@ -17,8 +20,8 @@ public class AggregationAndComposition {
         //task01();
         //task02();
         //task03();
-        task04();
-        //task05();
+        //task04();
+        task05();
     }
 
     private static void task01() {
@@ -159,9 +162,103 @@ public class AggregationAndComposition {
                 "и отрицательный балансы отдельно.");
         System.out.println("-------------------------------------------------------------");
 
+        Bank bank = new Bank();
 
+        Client client1 = new Client("Смирнов", "Алексей", "HB1234567");
+        Client client2 = new Client("Попов", "Генадий", "HB2234567");
+        Client client3 = new Client("Пупкин", "Дима", "HB3333333");
+
+        bank.addNewClient(client1);
+        bank.addNewClient(client2);
+        bank.addNewClient(client3);
+
+        client1.openAccount(new Account(101.15));
+        client1.openAccount(new Account(299.99));
+        client1.openAccount(new Account(-555.55));
+        client1.openAccount(new Account(320.31));
+
+        client2.openAccount(new Account(177.08));
+        client2.openAccount(new Account(-100.65));
+        client2.openAccount(new Account(1123.45));
+        client2.openAccount(new Account(540.80));
+
+        client3.openAccount(new Account(150.80));
+        client3.openAccount(new Account(-42.75));
+        client3.openAccount(new Account(1010.32));
+        client3.openAccount(new Account(800.58));
+
+        System.out.println("Информация по имеющимся клиентам банка:");
+        System.out.println(client1.getInformation());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println(client2.getInformation());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println(client3.getInformation());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println(">>> Проверяем аккаунт на блакировку разблакировку: " + client1.getPassportID());
+        System.out.println(bank.getClient("HB1234567").getAccount(1).getStatus());
+        System.out.println("Блокируем счет 1:");
+        bank.getClient("HB1234567").blockAccaunt(1);
+        System.out.println(bank.getClient("HB1234567").getAccount(1).getStatus());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println(">>> Сортировка счетов по балансу:");
+        bank.getClient("HB1234567").sortByBalance();
+        System.out.println(bank.getClient("HB1234567").getInformation());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        bank.getClient("HB2234567").sortByBalance();
+        System.out.println(bank.getClient("HB2234567").getInformation());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        bank.getClient("HB3333333").sortByBalance();
+        System.out.println(bank.getClient("HB3333333").getInformation());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println(">>> Общая сумма по счетам в банке:");
+        System.out.println(client1.toString());
+        System.out.println(client1.getBalance());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println(client2.toString());
+        System.out.println(client2.getBalance());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println(client3.toString());
+        System.out.println(client3.getBalance());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println(">>> Общая сумма по счетам в банке, имеющим положительный баланс:");
+        System.out.println(client1.toString());
+        System.out.println(client1.getBalancePositiveAccounts());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println(client2.toString());
+        System.out.println(client2.getBalancePositiveAccounts());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println(client3.toString());
+        System.out.println(client3.getBalancePositiveAccounts());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println(">>> Общая сумма по счетам в банке, имеющим отрицательный баланс:");
+        System.out.println(client1.toString());
+        System.out.println(client1.getBalanceNegativeAccounts());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println(client2.toString());
+        System.out.println(client2.getBalanceNegativeAccounts());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println(client3.toString());
+        System.out.println(client3.getBalanceNegativeAccounts());
         System.out.println("=============================================================\n");
     }
 
+
+    private static void task05() {
+        System.out.println("5. Туристические путевки. Сформировать набор предложений\n" +
+                "клиенту по выбору туристической путевки различного типа\n" +
+                "(отдых, экскурсии, лечение, шопинг, круиз и т. д.)\n" +
+                "для оптимального выбора. Учитывать возможность выбора\n" +
+                "транспорта, питания и числа дней. Реализовать выбор\n" +
+                "и сортировку путевок.");
+        System.out.println("-------------------------------------------------------------");
+
+
+        System.out.println("=============================================================\n");
+    }
 
 }
