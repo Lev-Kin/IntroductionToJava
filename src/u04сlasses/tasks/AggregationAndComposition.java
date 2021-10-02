@@ -13,6 +13,9 @@ import u04сlasses.tasks.state.State;
 import u04сlasses.tasks.text.Sentence;
 import u04сlasses.tasks.text.Text;
 import u04сlasses.tasks.text.Word;
+import u04сlasses.tasks.travel.*;
+
+import java.util.ArrayList;
 
 public class AggregationAndComposition {
     public static void Tasks() {
@@ -247,7 +250,6 @@ public class AggregationAndComposition {
         System.out.println("=============================================================\n");
     }
 
-
     private static void task05() {
         System.out.println("5. Туристические путевки. Сформировать набор предложений\n" +
                 "клиенту по выбору туристической путевки различного типа\n" +
@@ -257,8 +259,143 @@ public class AggregationAndComposition {
                 "и сортировку путевок.");
         System.out.println("-------------------------------------------------------------");
 
+        TourOperator travelOperator = new TourOperator("Pegas");
+        Traveler traveler = new Traveler("Tom", "Cruise", 750.42);
 
+        travelOperator.addTourPackage(
+                new TourPackage("Italy",
+                        "Rome",
+                        TourPackageType.SHOPPING,
+                        Transport.CAR,
+                        TypeOfFood.NOT_INCLUDED,
+                        5,
+                        599.50));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Italy",
+                        "Venice",
+                        TourPackageType.CRUISE,
+                        Transport.SHIP,
+                        TypeOfFood.BREAKFAST,
+                        20,
+                        1099.91));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Italy",
+                        "Milan",
+                        TourPackageType.SHOPPING,
+                        Transport.PLANE,
+                        TypeOfFood.BREAKFAST,
+                        3,
+                        399.99));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Italy",
+                        "Florence",
+                        TourPackageType.TREATMENT,
+                        Transport.TRAIN,
+                        TypeOfFood.ALL_INCLUSIVE,
+                        13,
+                        1099.11));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Italy",
+                        "Rome",
+                        TourPackageType.EXCURSION,
+                        Transport.PLANE,
+                        TypeOfFood.ALL_INCLUSIVE,
+                        10,
+                        950.36));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Spain",
+                        "Barcelona",
+                        TourPackageType.TREATMENT,
+                        Transport.BUS,
+                        TypeOfFood.ALL_INCLUSIVE,
+                        7,
+                        500.80));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Spain",
+                        "Salou",
+                        TourPackageType.RECREATION,
+                        Transport.PLANE,
+                        TypeOfFood.ALL_INCLUSIVE,
+                        14,
+                        1699.89));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Spain",
+                        "Madrid",
+                        TourPackageType.EXCURSION,
+                        Transport.BUS,
+                        TypeOfFood.NOT_INCLUDED,
+                        5,
+                        400.10));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Spain",
+                        "Barcelona",
+                        TourPackageType.CRUISE,
+                        Transport.SHIP,
+                        TypeOfFood.BREAKFAST,
+                        12,
+                        1099.99));
+
+        travelOperator.addTourPackage(
+                new TourPackage("Spain",
+                        "Malaga",
+                        TourPackageType.RECREATION,
+                        Transport.PLANE,
+                        TypeOfFood.BREAKFAST,
+                        15,
+                        1400.20));
+
+        System.out.println("Выбор по типу отыха выбрано лечение:");
+        ArrayList<TourPackage> selectByType = travelOperator.selectByTourPackageType(TourPackageType.TREATMENT);
+        TourOperator.printTours(selectByType);
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("\nВыбор по типу транспорта выброн самолет:");
+        ArrayList<TourPackage> selectByOption = travelOperator.selectByMoreOption(Transport.PLANE);
+        TourOperator.sortByNumberOfDays(selectByOption);
+        TourOperator.printTours(selectByOption);
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("\nВыбор по количеству дней прибывания выбрано 7:");
+        selectByOption = travelOperator.selectByMoreOption(7);
+        TourOperator.sortByPrice(selectByOption);
+        TourOperator.printTours(selectByOption);
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("\nВыбор по типу таранспотра и питания выбран корабль и завтрак:");
+        selectByOption = travelOperator.selectByMoreOption(Transport.SHIP, TypeOfFood.BREAKFAST);
+        TourOperator.sortByPrice(selectByOption);
+        TourOperator.printTours(selectByOption);
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("\nВыбор по типу транспорта, питанию и количеству дней\n" +
+                "было выбрано (поезд, все включино, 10 дней):");
+        selectByOption = travelOperator.selectByMoreOption(Transport.TRAIN, TypeOfFood.ALL_INCLUSIVE, 10);
+        TourOperator.sortByPrice(selectByOption);
+        TourOperator.printTours(selectByOption);
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("\nВыбор по типу транспорта, питанию и количеству дней\n" +
+                "было выбрано (самолет, все включино, 14 дней):");
+        selectByOption = travelOperator.selectByMoreOption(Transport.PLANE, TypeOfFood.ALL_INCLUSIVE, 14);
+        TourOperator.sortByPrice(selectByOption);
+        TourOperator.printTours(selectByOption);
+        System.out.println("-------------------------------------------------------------");
+
+        ArrayList<TourPackage> select = travelOperator.getTourPackages();
+        System.out.println("\nТур агент определил что из " + select.size() + " пакетов");
+        int numberPackage = 3;
+        System.out.println("Путешественник выбрал 3 пакет");
+        travelOperator.addClient(traveler, select.get(numberPackage));
+        TourOperator.printTours(travelOperator.selectTour(numberPackage));
+        //System.out.println(travelOperator.getClients().toString());
         System.out.println("=============================================================\n");
     }
-
 }
