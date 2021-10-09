@@ -20,10 +20,10 @@ import java.util.ArrayList;
 public class AggregationAndComposition {
     public static void Tasks() {
         System.out.println("\t\t=== Агрегация и композиция ===\n");
-        //task01();
-        //task02();
-        //task03();
-        //task04();
+        task01();
+        task02();
+        task03();
+        task04();
         task05();
     }
 
