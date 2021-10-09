@@ -3,13 +3,14 @@ package u05oop.tasks;
 import u05oop.tasks.file.Directory;
 import u05oop.tasks.file.File;
 import u05oop.tasks.file.TextFile;
+import u05oop.tasks.payment.Payment;
 
 public class Oop {
     public static void Tasks() {
         System.out.println("\t=== Задачи для закрепления навыков по теме ООП ===\n");
-        task01();
-        //task02();
-        //task03();
+        //task01();
+        task02();
+        task03();
         //task04();
         //task05();
     }
@@ -71,5 +72,40 @@ public class Oop {
         System.out.println("=============================================================\n");
     }
 
+    private static void task02() {
+        System.out.println("Задача 2.\n" +
+                "Создать класс Payment с внутренним классом, с помощью объектов\n" +
+                "которого можно сформировать покупку из нескольких товаров.");
+        System.out.println("-------------------------------------------------------------");
 
+        System.out.println("1. Создали класс Payment с внутреним классом.");
+        Payment payment = new Payment();
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("2. С помощью объектов формируем покупку из нескольких товаров.");
+        String good = "Chacolate";
+        double price = 5.15;
+        double wight = 113;
+        int amount = 7;
+        Payment.Product product = payment.new Product(good, price, wight);
+        payment.purchaseMultipleTheSameGoods(product, amount);
+        System.out.println("Покупаем продукт в количесве " + amount + " штук.");
+        product.print();
+
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("3. Выводим результат цену покупки:");
+        System.out.printf("Итого: %.2f\n", payment.getTotalPayment());
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task03() {
+        System.out.println("Задача 3.\n" +
+                "Создать класс Календарь с внутренним классом,\n" +
+                "с помощью объектов которого можно хранить информацию\n" +
+                "о выходных и праздничных днях.");
+        System.out.println("-------------------------------------------------------------");
+
+
+        System.out.println("=============================================================\n");
+    }
 }
