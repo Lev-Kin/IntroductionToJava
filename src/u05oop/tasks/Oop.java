@@ -1,17 +1,21 @@
 package u05oop.tasks;
 
+import u05oop.tasks.calendar.Calendar;
 import u05oop.tasks.file.Directory;
 import u05oop.tasks.file.File;
 import u05oop.tasks.file.TextFile;
 import u05oop.tasks.payment.Payment;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Oop {
     public static void Tasks() {
         System.out.println("\t=== Задачи для закрепления навыков по теме ООП ===\n");
         //task01();
-        task02();
-        task03();
-        //task04();
+        //task02();
+        //task03();
+        task04();
         //task05();
     }
 
@@ -105,7 +109,57 @@ public class Oop {
                 "о выходных и праздничных днях.");
         System.out.println("-------------------------------------------------------------");
 
+        int year = 2022;
+        Calendar calendar = new Calendar(year);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+        System.out.println("Дабавим некоторые праздинчные дни.");
+        calendar.addHoliday(LocalDate.parse("01.01." + year, dateTimeFormatter), "Новый Год");
+        calendar.addHoliday(LocalDate.parse("07.01." + year, dateTimeFormatter), "Рождество Христово");
+        calendar.addHoliday(LocalDate.parse("08.03." + year, dateTimeFormatter), "8 Марта");
+        calendar.addHoliday(LocalDate.parse("24.04." + year, dateTimeFormatter), "Пасха");
+        calendar.addHoliday(LocalDate.parse("01.05." + year, dateTimeFormatter), "День Труда");
+        calendar.addHoliday(LocalDate.parse("09.05." + year, dateTimeFormatter), "День Победы");
+        calendar.addHoliday(LocalDate.parse("03.07." + year, dateTimeFormatter), "День Независимости");
+        calendar.addHoliday(LocalDate.parse("07.11." + year, dateTimeFormatter), "День Октябрьской революции");
+        calendar.addHoliday(LocalDate.parse("25.12." + year, dateTimeFormatter), "Католическое рождество");
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Празднечные дни добавлены в календарь.");
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+        System.out.println("Выводим календарь на " + year + " год выходных и праздничных дней:");
+        calendar.printHolidays();
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        String holidayName = "День Независимости";
+        System.out.println("Удалим из каленадаря празник - " + holidayName);
+        Calendar.Holiday holidayRemove1 = calendar.removeHoliday(holidayName);
+        System.out.println("Удален следующий празник\n" + holidayRemove1);
+        holidayName = "День Октябрьской революции";
+        System.out.println("Удалим из каленадаря празник - " + holidayName);
+        Calendar.Holiday holidayRemove2 = calendar.removeHoliday(holidayName);
+        System.out.println("Удален следующий празник\n" + holidayRemove2);
+        System.out.println("=============================================================\n");
+    }
+
+    private static void task04() {
+        System.out.println("Задача 4.\n" +
+                "Создать консольное приложение, удовлетворяющее следующим требованиям:\n" +
+                "- Приложение должно быть объектно-, а не процедурно-ориентированным\n" +
+                "- Каждый класс должен иметь отражающее смысл название и информативный состав.\n" +
+                "- Наследование должно применяться только тогда, когда это имеет смысл.\n" +
+                "- При кодировании должны быть использованы соглашения об оформлении кода java code convention.\n" +
+                "- Классы должны быть грамотно разложены по пакетам." +
+                "- Консольное меню должно быть минимальным.\n" +
+                "- Для хранения данных можно использовать файлы.\n\n" +
+                "Дракон и его сокровища.\n" +
+                "Создать программу, позволяющую обрабатывать сведения о 100 сокровищах\n" +
+                "в пещере дракона. Реализовать возможность просмотра сокровищ, выбора\n" +
+                "самого дорогого по стоимости сокровища и выбора сокровищ на заданную сумму.)");
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
 
         System.out.println("=============================================================\n");
     }
+
 }
