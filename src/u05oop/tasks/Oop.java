@@ -1,11 +1,15 @@
 package u05oop.tasks;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import u05oop.tasks.calendar.Calendar;
 import u05oop.tasks.cave.Cave;
 import u05oop.tasks.file.Directory;
 import u05oop.tasks.file.File;
 import u05oop.tasks.file.TextFile;
+import u05oop.tasks.gift.Gift;
+import u05oop.tasks.gift.sweetness.SweetnessFactory;
+import u05oop.tasks.gift.sweetness.SweetnessType;
+import u05oop.tasks.gift.wrap.WrapFactory;
+import u05oop.tasks.gift.wrap.WrapType;
 import u05oop.tasks.payment.Payment;
 
 import java.io.IOException;
@@ -19,8 +23,8 @@ public class Oop {
         //task01();
         //task02();
         //task03();
-        task04();
-        //task05();
+        //task04();
+        task05();
     }
 
     private static void task01() {
@@ -137,11 +141,11 @@ public class Oop {
         String holidayName = "День Независимости";
         System.out.println("Удалим из каленадаря празник - " + holidayName);
         Calendar.Holiday holidayRemove1 = calendar.removeHoliday(holidayName);
-        System.out.println("Удален следующий празник\n" + holidayRemove1);
+        System.out.println("Удален следующий праздник\n" + holidayRemove1);
         holidayName = "День Октябрьской революции";
-        System.out.println("Удалим из каленадаря празник - " + holidayName);
+        System.out.println("Удалим из каленадаря праздник - " + holidayName);
         Calendar.Holiday holidayRemove2 = calendar.removeHoliday(holidayName);
-        System.out.println("Удален следующий празник\n" + holidayRemove2);
+        System.out.println("Удален следующий праздник\n" + holidayRemove2);
         System.out.println("=============================================================\n");
     }
 
@@ -207,7 +211,7 @@ public class Oop {
                 case 1: {
                     System.out.println("-------------------------------------------------------------");
                     System.out.println("\t\t\t_______| Выбран 1 пункт меню |_______");
-                    System.out.println("Coкровище пищеры дракона:");
+                    System.out.println("Coкровище пещеры дракона:");
                     System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
                     cave.printAllTreasures();
                     System.out.println("-------------------------------------------------------------");
@@ -223,7 +227,7 @@ public class Oop {
                 case 2: {
                     System.out.println("-------------------------------------------------------------");
                     System.out.println("\t\t\t_______| Выбран 2 пункт меню |_______");
-                    System.out.println("Coкровище забраные из пищеры дракона:");
+                    System.out.println("Coкровище забраные из пещеры дракона:");
                     System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
                     cave.printTakenTreasures();
                     System.out.println("-------------------------------------------------------------");
@@ -365,5 +369,44 @@ public class Oop {
         System.out.println("=============================================================\n");
     }
 
+    private static void task05() {
+        System.out.println("Задача 5.\n" +
+                "Создать консольное приложение, удовлетворяющее следующим требованиям:\n" +
+                "• Корректно спроектируйте и реализуйте предметную область задачи.\n" +
+                "• Для создания объектов из иерархии классов продумайте возможность\n" +
+                "  использования порождающих шаблонов проектирования.\n" +
+                "• Реализуйте проверку данных, вводимых пользователем, но не на стороне клиента.\n" +
+                "• для проверки корректности переданных данных можно применить регулярные выражения.\n" +
+                "• Меню выбора действия пользователем можно не реализовывать, используйте заглушку.\n" +
+                "• Особое условие: переопределите, где необходимо, методы toString(), equals() и hashCode().");
+        System.out.println("Подарки.\n" +
+                "Реализовать приложение, позволяющее создавать подарки\n" +
+                "(объект, представляющий собой подарок).\n" +
+                "Составляющими целого подарка являются сладости и упаковка.");
+        System.out.println("-------------------------------------------------------------");
+
+        System.out.println("Делаем подарок:");
+        Gift gift = new Gift();
+        System.out.println("1) Производим сладости.");
+        SweetnessFactory sweetnessFactory = new SweetnessFactory();
+
+        gift.addSweetness(sweetnessFactory.createSweetness(
+                SweetnessType.PIE, "Sweet cherry", 77.31));
+
+        System.out.println("Сладасти произведены.");
+        System.out.println(gift.getSweetnesses());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("2) Производим упаковку для упаковки сладостей.");
+        WrapFactory wrapFactory = new WrapFactory();
+        gift.setWrap(wrapFactory.createWrap(WrapType.BOX, "From Oleg", "Wood"));
+        System.out.println("Упаковка выбрана.");
+        System.out.println(gift.getWrap());
+        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
+        System.out.println("3) Подарок готов.");
+        System.out.println(gift);
+        System.out.println("=============================================================\n");
+    }
 
 }
