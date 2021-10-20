@@ -194,7 +194,7 @@ public class Arrays1D {
         }
         System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
 
-        System.out.printf("Сумма элеметов где i - постое число = %6.2f\n", sum);
+        System.out.printf("Сумма элеметов где i - простое число = %6.2f\n", sum);
         System.out.println("=============================================================\n");
     }
 

@@ -167,6 +167,4 @@ public class MyMethodsRegularExpression {
         return result;
     }
 
-
-
 }

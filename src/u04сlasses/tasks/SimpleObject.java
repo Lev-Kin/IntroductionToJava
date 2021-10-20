@@ -329,7 +329,6 @@ public class SimpleObject {
                             }
 
                         } while (option != 1 && option != 2);
-                        System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
 
                         if (option == 1) {
                             System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");

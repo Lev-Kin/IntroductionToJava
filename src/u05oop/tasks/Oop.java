@@ -20,10 +20,10 @@ import java.util.Scanner;
 public class Oop {
     public static void Tasks() {
         System.out.println("\t=== Задачи для закрепления навыков по теме ООП ===\n");
-        //task01();
-        //task02();
-        //task03();
-        //task04();
+        task01();
+        task02();
+        task03();
+        task04();
         task05();
     }
 

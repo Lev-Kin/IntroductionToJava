@@ -43,7 +43,7 @@ public class CycleProgram {
     }
 
     private static void task02() {
-        System.out.println("1. Вычислить значения функции на отрезке [a, b] с шагом h:\n" +
+        System.out.println("2. Вычислить значения функции на отрезке [a, b] с шагом h:\n" +
                 "y = x, x > 2\n" +
                 "    -x, x <= 2.");
         System.out.println("-------------------------------------------------------------");
