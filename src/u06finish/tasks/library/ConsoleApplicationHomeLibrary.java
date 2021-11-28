@@ -160,6 +160,7 @@ public class ConsoleApplicationHomeLibrary {
                     System.out.println("Добрый день " + catalogLibrary.getPerson().getPersonName() + "!");
                 }
                 System.out.println(".   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .");
+
         }
     }
 }
